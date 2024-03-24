@@ -1,0 +1,1009 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Table">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="employee_id" type="xs:int" minOccurs="0" />
+                <xs:element name="ime_prezime" type="xs:string" minOccurs="0" />
+                <xs:element name="radno_mjesto" type="xs:string" minOccurs="0" />
+                <xs:element name="mjesto_start" type="xs:string" minOccurs="0" />
+                <xs:element name="mjesto_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="razlog_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="dat_poc_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="trajanje_putovanja" type="xs:decimal" minOccurs="0" />
+                <xs:element name="pn_relacija" type="xs:string" minOccurs="0" />
+                <xs:element name="prev_text" type="xs:string" minOccurs="0" />
+                <xs:element name="prev_auto" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prev_vlauto" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prev_avion" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prev_autobus" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prevoz_voz" type="xs:boolean" minOccurs="0" />
+                <xs:element name="troskovi_putovanja_knjizenje" type="xs:string" minOccurs="0" />
+                <xs:element name="aktivnost" type="xs:string" minOccurs="0" />
+                <xs:element name="org_jed_naziv" type="xs:string" minOccurs="0" />
+                <xs:element name="org_jed" type="xs:string" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_a" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_b" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_c" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_d" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_obracuna" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_razlika" type="xs:decimal" minOccurs="0" />
+                <xs:element name="pn_iznos_dnevnice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="proc_dnevnice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="pn_broj_dnevnica" type="xs:decimal" minOccurs="0" />
+                <xs:element name="akontacija_dnevnice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="akontacija_nocenje" type="xs:decimal" minOccurs="0" />
+                <xs:element name="akontacija_ostalo" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_akontacije" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ispl_akontacije" type="xs:decimal" minOccurs="0" />
+                <xs:element name="odobrena_akontacija" type="xs:boolean" minOccurs="0" />
+                <xs:element name="vrsta_naloga" type="xs:int" minOccurs="0" />
+                <xs:element name="status_naloga" type="xs:int" minOccurs="0" />
+                <xs:element name="dummytimestamp" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_dat_polaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_dat_povratka" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_br_drzava" type="xs:int" minOccurs="0" />
+                <xs:element name="izv_naz_drz_1" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_1_dat_ulaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_1_dat_izlaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_naz_drz_2" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_2_dat_ulaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_2_dat_izlaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_naz_drz_3" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_3_dat_ulaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_3_dat_izlaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_naz_drz_4" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_4_dat_ulaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_drz_4_dat_izlaska" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_naz_troska_1" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_izn_troska_1" type="xs:int" minOccurs="0" />
+                <xs:element name="izv_naz_troska_2" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_izn_troska_2" type="xs:int" minOccurs="0" />
+                <xs:element name="izv_naz_troska_3" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_izn_troska_3" type="xs:int" minOccurs="0" />
+                <xs:element name="izv_naz_troska_4" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_izn_troska_4" type="xs:int" minOccurs="0" />
+                <xs:element name="izv_naz_troska_5" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_izn_troska_5" type="xs:int" minOccurs="0" />
+                <xs:element name="izv_naz_troska_6" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_izn_troska_6" type="xs:int" minOccurs="0" />
+                <xs:element name="izv_osig_ishrana" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_podnio" type="xs:string" minOccurs="0" />
+                <xs:element name="izv_odobrio" type="xs:string" minOccurs="0" />
+                <xs:element name="id" type="xs:int" minOccurs="0" />
+                <xs:element name="pn_id" type="xs:int" minOccurs="0" />
+                <xs:element name="pn_oblast" type="xs:int" minOccurs="0" />
+                <xs:element name="relacija" type="xs:string" minOccurs="0" />
+                <xs:element name="dat_polaska" type="xs:string" minOccurs="0" />
+                <xs:element name="vri_polaska" type="xs:string" minOccurs="0" />
+                <xs:element name="dat_povratka" type="xs:string" minOccurs="0" />
+                <xs:element name="vri_povratka" type="xs:string" minOccurs="0" />
+                <xs:element name="broj_sati" type="xs:double" minOccurs="0" />
+                <xs:element name="trajanje_dani" type="xs:int" minOccurs="0" />
+                <xs:element name="trajanje_sati" type="xs:int" minOccurs="0" />
+                <xs:element name="broj_dnevnica" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_dnevnice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ukupan_iznos" type="xs:decimal" minOccurs="0" />
+                <xs:element name="vrsta_prevoza" type="xs:string" minOccurs="0" />
+                <xs:element name="razred" type="xs:string" minOccurs="0" />
+                <xs:element name="iznos_karte" type="xs:decimal" minOccurs="0" />
+                <xs:element name="naknada_km" type="xs:decimal" minOccurs="0" />
+                <xs:element name="troskovi_goriva" type="xs:decimal" minOccurs="0" />
+                <xs:element name="troskovi_parkinga" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ostali_troskovi" type="xs:decimal" minOccurs="0" />
+                <xs:element name="obracun_ostalih_troskova" type="xs:string" minOccurs="0" />
+                <xs:element name="order_id" type="xs:int" minOccurs="0" />
+                <xs:element name="pno_dummytimestamp" type="xs:string" minOccurs="0" />
+                <xs:element name="status_text" type="xs:string" minOccurs="0" />
+                <xs:element name="EmployeeID" type="xs:int" minOccurs="0" />
+                <xs:element name="FirstName" type="xs:string" minOccurs="0" />
+                <xs:element name="LastName" type="xs:string" minOccurs="0" />
+                <xs:element name="epotpis" type="xs:string" minOccurs="0" />
+                <xs:element name="temeljnica" type="xs:string" minOccurs="0" />
+                <xs:element name="pn_izvjestaj" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>473</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>1</pn_oblast>
+    <relacija>polazak-povratak</relacija>
+    <dat_polaska>21-10-2021</dat_polaska>
+    <vri_polaska>07:00</vri_polaska>
+    <dat_povratka>23-10-2021</dat_povratka>
+    <vri_povratka>18:00</vri_povratka>
+    <broj_sati>59</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>25.000000</iznos_dnevnice>
+    <ukupan_iznos>62.500000</ukupan_iznos>
+    <vrsta_prevoza />
+    <razred />
+    <iznos_karte>0.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova>0</obracun_ostalih_troskova>
+    <order_id>1</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>487</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>2</pn_oblast>
+    <relacija>SA VG</relacija>
+    <dat_polaska>01-01-1970</dat_polaska>
+    <vri_polaska>01:00</vri_polaska>
+    <dat_povratka>01-01-1970</dat_povratka>
+    <vri_povratka>01:00</vri_povratka>
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>30.000000</ukupan_iznos>
+    <vrsta_prevoza>Vlastiti auto</vrsta_prevoza>
+    <razred>parking</razred>
+    <iznos_karte>0.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova />
+    <order_id>0</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>481</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>2</pn_oblast>
+    <relacija>SA VG</relacija>
+    <dat_polaska>01-01-1970</dat_polaska>
+    <vri_polaska>01:00</vri_polaska>
+    <dat_povratka>01-01-1970</dat_povratka>
+    <vri_povratka>01:00</vri_povratka>
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>0.000000</ukupan_iznos>
+    <vrsta_prevoza>Vlastiti auto</vrsta_prevoza>
+    <razred>PREĐENO km ZA VLASTITO AUTO</razred>
+    <iznos_karte>200.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova />
+    <order_id>1</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>474</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>2</pn_oblast>
+    <relacija>SA VG SA</relacija>
+    <dat_polaska>01-01-1901</dat_polaska>
+    <vri_polaska>00:00</vri_polaska>
+    <dat_povratka>01-01-1901</dat_povratka>
+    <vri_povratka>00:00</vri_povratka>
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>0.000000</ukupan_iznos>
+    <vrsta_prevoza>Vlastiti auto</vrsta_prevoza>
+    <razred>NAKNADA PO km ZA VLASTITO AUTO (KM)</razred>
+    <iznos_karte>0.340000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova>0</obracun_ostalih_troskova>
+    <order_id>2</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>485</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>2</pn_oblast>
+    <relacija>SA VG SA</relacija>
+    <dat_polaska>31-12-1969</dat_polaska>
+    <vri_polaska>17:00</vri_polaska>
+    <dat_povratka>31-12-1969</dat_povratka>
+    <vri_povratka>17:00</vri_povratka>
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>68.000000</ukupan_iznos>
+    <vrsta_prevoza>Vlastiti auto</vrsta_prevoza>
+    <razred>kilometraža</razred>
+    <iznos_karte>0.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova />
+    <order_id>3</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>486</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>2</pn_oblast>
+    <relacija>SA VG SA</relacija>
+    <dat_polaska>01-01-1970</dat_polaska>
+    <vri_polaska>01:00</vri_polaska>
+    <dat_povratka>01-01-1970</dat_povratka>
+    <vri_povratka>01:00</vri_povratka>
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>30.000000</ukupan_iznos>
+    <vrsta_prevoza>Vlastiti auto</vrsta_prevoza>
+    <razred>putarina</razred>
+    <iznos_karte>1.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova />
+    <order_id>4</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>488</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>2</pn_oblast>
+    <relacija>vg-selo-vg</relacija>
+    <dat_polaska>01-01-1970</dat_polaska>
+    <vri_polaska>01:00</vri_polaska>
+    <dat_povratka>01-01-1970</dat_povratka>
+    <vri_povratka>01:00</vri_povratka>
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>5.000000</ukupan_iznos>
+    <vrsta_prevoza>Autobus</vrsta_prevoza>
+    <razred>karta</razred>
+    <iznos_karte>0.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <order_id>5</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>475</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>3</pn_oblast>
+    <relacija />
+    <dat_polaska>01-01-1901</dat_polaska>
+    <vri_polaska>00:00</vri_polaska>
+    <dat_povratka>01-01-1901</dat_povratka>
+    <vri_povratka>00:00</vri_povratka>
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>130.000000</ukupan_iznos>
+    <vrsta_prevoza />
+    <razred />
+    <iznos_karte>0.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova>Noćenje</obracun_ostalih_troskova>
+    <order_id>1</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+  <Table>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <pn_relacija>SA VG SA</pn_relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <pn_iznos_dnevnice>25.000000</pn_iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <pn_broj_dnevnica>3.0</pn_broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021</dummytimestamp>
+    <izv_dat_polaska>21-10-2021 07:00</izv_dat_polaska>
+    <izv_dat_povratka>23-10-2021 18:00</izv_dat_povratka>
+    <izv_br_drzava>0</izv_br_drzava>
+    <izv_naz_drz_1 />
+    <izv_drz_1_dat_ulaska />
+    <izv_drz_1_dat_izlaska />
+    <izv_naz_drz_2 />
+    <izv_drz_2_dat_ulaska />
+    <izv_drz_2_dat_izlaska />
+    <izv_naz_drz_3 />
+    <izv_drz_3_dat_ulaska />
+    <izv_drz_3_dat_izlaska />
+    <izv_naz_drz_4 />
+    <izv_drz_4_dat_ulaska />
+    <izv_drz_4_dat_izlaska />
+    <izv_naz_troska_1>Putarina</izv_naz_troska_1>
+    <izv_izn_troska_1>4</izv_izn_troska_1>
+    <izv_naz_troska_2>Noćenje</izv_naz_troska_2>
+    <izv_izn_troska_2>1</izv_izn_troska_2>
+    <izv_naz_troska_3>Parking</izv_naz_troska_3>
+    <izv_izn_troska_3>13</izv_izn_troska_3>
+    <izv_naz_troska_4>Gorivo</izv_naz_troska_4>
+    <izv_izn_troska_4>1</izv_izn_troska_4>
+    <izv_naz_troska_5>Ostalo</izv_naz_troska_5>
+    <izv_izn_troska_5>0</izv_izn_troska_5>
+    <izv_naz_troska_6>izv_naz_troska</izv_naz_troska_6>
+    <izv_izn_troska_6>0</izv_izn_troska_6>
+    <izv_osig_ishrana>DA</izv_osig_ishrana>
+    <izv_podnio>Ružica Zorić</izv_podnio>
+    <izv_odobrio>Ružica Zorić</izv_odobrio>
+    <id>476</id>
+    <pn_id>101</pn_id>
+    <pn_oblast>4</pn_oblast>
+    <dat_polaska />
+    <dat_povratka />
+    <broj_sati>0</broj_sati>
+    <trajanje_dani>2</trajanje_dani>
+    <trajanje_sati>11</trajanje_sati>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <iznos_dnevnice>0.000000</iznos_dnevnice>
+    <ukupan_iznos>0.000000</ukupan_iznos>
+    <iznos_karte>0.000000</iznos_karte>
+    <naknada_km>0.000000</naknada_km>
+    <troskovi_goriva>0.000000</troskovi_goriva>
+    <troskovi_parkinga>0.000000</troskovi_parkinga>
+    <ostali_troskovi>0.000000</ostali_troskovi>
+    <obracun_ostalih_troskova>0</obracun_ostalih_troskova>
+    <order_id>1</order_id>
+    <pno_dummytimestamp>20-10-2021</pno_dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+    <temeljnica />
+    <pn_izvjestaj>Obaljena je posjeta</pn_izvjestaj>
+  </Table>
+</NewDataSet>

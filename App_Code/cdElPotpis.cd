@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Klijent šalje podatke za potpis naloga">
+    <Position X="2.864" Y="0.615" Height="0.75" Width="1.752" />
+  </Comment>
+  <Comment CommentText="Klijent šalje za potpis naloga - stara verzija potpisa">
+    <Position X="5.916" Y="4" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Korisiti se u dosta API poziva - stara verzija potpisa">
+    <Position X="5.906" Y="0.75" Height="0.688" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Koristi se u API pozivima:&#xD;&#xA;ECertIns&#xD;&#xA;ECertList">
+    <Position X="0.5" Y="0.719" Height="0.656" Width="1.929" />
+  </Comment>
+  <Comment CommentText="služi za vraćanje odobrenja vezanih uz epotpis&#xD;&#xA;&#xD;&#xA;API-ESignAuthorize setuje odobrenja">
+    <Position X="2.989" Y="4.375" Height="1.812" Width="1.752" />
+  </Comment>
+  <Comment CommentText="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;   API">
+    <Position X="8.5" Y="0.5" Height="7.76" Width="0.7" />
+  </Comment>
+  <Class Name="NgECertificate">
+    <Position X="0.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ICEAgCAAAAAAQAIAIAAkAAgAoIAAAkAAAKAYAgAgAgA=</HashCode>
+      <FileName>App_Code\NgECertificate.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NgESignature">
+    <Position X="6" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAACAAAAIAAAAAAAAAAACAEAAAAAAQAA=</HashCode>
+      <FileName>App_Code\NgESignature.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngPnPotpisByCert">
+    <Position X="3" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQggAAAAgABAAIAAgAAAAA=</HashCode>
+      <FileName>App_Code\ngPnPotpisByCert.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngPnPotpis">
+    <Position X="6" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAACAAEAAAABAAACAQgAAAAAAAAAAIAAAAAAgA=</HashCode>
+      <FileName>App_Code\ngPnPotpis.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngPotpisStatus">
+    <Position X="3" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAIAAgAAAAICAAAAAAA=</HashCode>
+      <FileName>App_Code\ngPotpisStatus.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngApiCertificate">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAJEIAAIQAAEgAALEACAgAAACAABAAAAAiCAEAAAAA=</HashCode>
+      <FileName>App_Code\ngApiCertificate.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngApiCertificateSign">
+    <Position X="12.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQpAAAQAAEBAAABCACgAAAAAAgAAAABAQAIQgAAE=</HashCode>
+      <FileName>App_Code\ngApiCertificateSign.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngApiRSAKeys">
+    <Position X="15.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAJEAAAAAAAAAgAAAAEAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\ngApiRSAKeys.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngApiPnPotpisi">
+    <Position X="15.75" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAABAAAAAAAAAAAAAAAgAAAggAAAAAAAAAI=</HashCode>
+      <FileName>App_Code\ngApiPnPotpisi.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NgApiPnPutniNalog">
+    <Position X="17.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACARBRBAvCQhQYEhAEaAAYiB0RIgYAMEAECQQEURhAA=</HashCode>
+      <FileName>App_Code\NgApiPnPutniNalog.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngApiEmailNotify">
+    <Position X="15.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACgAAIAAABAABAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>App_Code\ngApiEmailNotify.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="HashType">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAGAAwEAAAACAAgCAgACAAAAgAAAAEI=</HashCode>
+      <FileName>App_Code\ngApiCertificate.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ContainerType">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAACACAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\ngApiCertificate.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

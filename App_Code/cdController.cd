@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="šalje email, na bazi templejt fajlova koji se nalaze u Data folderu.&#xD;&#xA;Razvijeni su metodi koji uzimaju templejt iz baze, iz sys_json tabele">
+    <Position X="9" Y="0.531" Height="0.927" Width="2.512" />
+  </Comment>
+  <Class Name="JwtputnalController">
+    <Position X="4" Y="0.5" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="JwtputnalController.parList" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>App_Code\JwtputnalController.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>SzBooB7E9TRQ4oAFggcmCMHFCUgGhRpgGmW2AEREaFk=</HashCode>
+      <FileName>App_Code\JwtputnalController.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NgApiEmailNET">
+    <Position X="9" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiQgMABADgEAQAAAIAAABFAUQAAAAAAAEAQEAAAQA=</HashCode>
+      <FileName>App_Code\NgApiEmailNET.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

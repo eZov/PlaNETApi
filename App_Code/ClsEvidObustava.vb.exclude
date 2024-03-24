@@ -1,0 +1,27 @@
+﻿Imports Microsoft.VisualBasic
+
+Public Class ClsEvidObustava
+
+    Public Property id As Integer
+    Public Property Sifra As String
+
+    Public Property Naziv As String
+
+    Public Property Kategorija As String
+
+    Public Property Banka As Integer
+    Public Property PoslovniPartner As Integer
+
+    Public Property Procenat As Double
+    Public Property Iznos As Double
+
+    Public Property Atribut_1 As String
+    Public Property TekuciObracun As Integer
+
+    Public Property RacunZaUplatu As String
+
+    Public Property IznosUplate As Double
+
+    Public Property DummyTimeStamp As DateTime
+
+End Class

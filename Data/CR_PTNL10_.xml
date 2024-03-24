@@ -1,0 +1,314 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Table">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="pravnolice" type="xs:string" minOccurs="0" />
+                <xs:element name="pdateStart" type="xs:string" minOccurs="0" />
+                <xs:element name="pdateEnd" type="xs:string" minOccurs="0" />
+                <xs:element name="id" type="xs:int" minOccurs="0" />
+                <xs:element name="pnDatTime" type="xs:string" minOccurs="0" />
+                <xs:element name="pnWeek" type="xs:int" minOccurs="0" />
+                <xs:element name="pnYear" type="xs:int" minOccurs="0" />
+                <xs:element name="ime_prezime" type="xs:string" minOccurs="0" />
+                <xs:element name="radno_mjesto" type="xs:string" minOccurs="0" />
+                <xs:element name="employee_id" type="xs:int" minOccurs="0" />
+                <xs:element name="mjesto_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="mjesto_start" type="xs:string" minOccurs="0" />
+                <xs:element name="razlog_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="prev_text" type="xs:string" minOccurs="0" />
+                <xs:element name="dat_poc_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="trajanje_putovanja" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_akontacije" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ispl_akontacije" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_obracuna" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_razlika" type="xs:decimal" minOccurs="0" />
+                <xs:element name="status_text" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>133</id>
+    <pnDatTime>12.01.2022 10:45</pnDatTime>
+    <pnWeek>2</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <employee_id>893</employee_id>
+    <mjesto_putovanja>MO</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>TEST1</razlog_putovanja>
+    <prev_text>Vlastiti auto</prev_text>
+    <dat_poc_putovanja>17.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <iznos_akontacije>225.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <iznos_obracuna>192.500000</iznos_obracuna>
+    <iznos_razlika>192.500000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>135</id>
+    <pnDatTime>13.01.2022 09:07</pnDatTime>
+    <pnWeek>2</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <employee_id>893</employee_id>
+    <mjesto_putovanja>BL</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>ITC</razlog_putovanja>
+    <prev_text>Obezbijeđen prevoz</prev_text>
+    <dat_poc_putovanja>13.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>100.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <iznos_obracuna>95.000000</iznos_obracuna>
+    <iznos_razlika>95.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>136</id>
+    <pnDatTime>13.01.2022 12:29</pnDatTime>
+    <pnWeek>2</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <employee_id>893</employee_id>
+    <mjesto_putovanja>BL</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>ITC</razlog_putovanja>
+    <prev_text>Obezbijeđen prevoz</prev_text>
+    <dat_poc_putovanja>13.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>100.000000</iznos_akontacije>
+    <ispl_akontacije>100.000000</ispl_akontacije>
+    <iznos_obracuna>90.000000</iznos_obracuna>
+    <iznos_razlika>-10.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>139</id>
+    <pnDatTime>24.01.2022 14:20</pnDatTime>
+    <pnWeek>4</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <employee_id>893</employee_id>
+    <mjesto_putovanja>ZE</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>TEST25</razlog_putovanja>
+    <prev_text>Službeni auto</prev_text>
+    <dat_poc_putovanja>26.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>100.000000</iznos_akontacije>
+    <ispl_akontacije>100.000000</ispl_akontacije>
+    <iznos_obracuna>75.000000</iznos_obracuna>
+    <iznos_razlika>-25.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>140</id>
+    <pnDatTime>24.01.2022 14:40</pnDatTime>
+    <pnWeek>4</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <employee_id>893</employee_id>
+    <mjesto_putovanja>TZ</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>TEST26</razlog_putovanja>
+    <prev_text>Službeni auto</prev_text>
+    <dat_poc_putovanja>27.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>120.000000</iznos_akontacije>
+    <ispl_akontacije>120.000000</ispl_akontacije>
+    <iznos_obracuna>100.000000</iznos_obracuna>
+    <iznos_razlika>-20.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>141</id>
+    <pnDatTime>25.01.2022 09:09</pnDatTime>
+    <pnWeek>4</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Mirela Hiseni</ime_prezime>
+    <radno_mjesto>Blagajnik</radno_mjesto>
+    <employee_id>307</employee_id>
+    <mjesto_putovanja>MO</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>test 27</razlog_putovanja>
+    <prev_text>Službeni auto</prev_text>
+    <dat_poc_putovanja>26.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>100.000000</iznos_akontacije>
+    <ispl_akontacije>100.000000</ispl_akontacije>
+    <iznos_obracuna>50.000000</iznos_obracuna>
+    <iznos_razlika>-50.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>144</id>
+    <pnDatTime>25.01.2022 12:19</pnDatTime>
+    <pnWeek>4</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Mirela Hiseni</ime_prezime>
+    <radno_mjesto>Blagajnik</radno_mjesto>
+    <employee_id>307</employee_id>
+    <mjesto_putovanja>BI</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>TEST</razlog_putovanja>
+    <prev_text>Službeni auto</prev_text>
+    <dat_poc_putovanja>28.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>105.000000</iznos_akontacije>
+    <ispl_akontacije>105.000000</ispl_akontacije>
+    <iznos_obracuna>120.000000</iznos_obracuna>
+    <iznos_razlika>15.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>145</id>
+    <pnDatTime>25.01.2022 12:41</pnDatTime>
+    <pnWeek>4</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <employee_id>893</employee_id>
+    <mjesto_putovanja>BI</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>TEST</razlog_putovanja>
+    <prev_text>Službeni auto</prev_text>
+    <dat_poc_putovanja>28.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>50.000000</iznos_akontacije>
+    <ispl_akontacije>50.000000</ispl_akontacije>
+    <iznos_obracuna>50.000000</iznos_obracuna>
+    <iznos_razlika>0.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>154</id>
+    <pnDatTime>27.01.2022 13:48</pnDatTime>
+    <pnWeek>4</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Advija Alimanović</ime_prezime>
+    <radno_mjesto>Poslovni sekretar II</radno_mjesto>
+    <employee_id>26</employee_id>
+    <mjesto_putovanja>BI</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>TEST</razlog_putovanja>
+    <prev_text>Obezbijeđen prevoz</prev_text>
+    <dat_poc_putovanja>28.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>135.000000</iznos_akontacije>
+    <ispl_akontacije>135.000000</ispl_akontacije>
+    <iznos_obracuna>105.000000</iznos_obracuna>
+    <iznos_razlika>-30.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>155</id>
+    <pnDatTime>27.01.2022 14:31</pnDatTime>
+    <pnWeek>4</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Mubera Herac</ime_prezime>
+    <radno_mjesto>Konter</radno_mjesto>
+    <employee_id>5144</employee_id>
+    <mjesto_putovanja>TZ</mjesto_putovanja>
+    <mjesto_start>SA</mjesto_start>
+    <razlog_putovanja>TEST</razlog_putovanja>
+    <prev_text>Obezbijeđen prevoz</prev_text>
+    <dat_poc_putovanja>30.01.2022</dat_poc_putovanja>
+    <trajanje_putovanja>2.0</trajanje_putovanja>
+    <iznos_akontacije>125.000000</iznos_akontacije>
+    <ispl_akontacije>125.000000</ispl_akontacije>
+    <iznos_obracuna>65.000000</iznos_obracuna>
+    <iznos_razlika>-60.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>158</id>
+    <pnDatTime>08.09.2022 07:46</pnDatTime>
+    <pnWeek>36</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Muamer Sijerčić</ime_prezime>
+    <radno_mjesto>Specijalista za PC hardware</radno_mjesto>
+    <employee_id>764</employee_id>
+    <mjesto_putovanja>livno</mjesto_putovanja>
+    <mjesto_start>sa</mjesto_start>
+    <razlog_putovanja>test prev vl autom</razlog_putovanja>
+    <prev_text>Obezbijeđen prevoz,Vlastiti auto</prev_text>
+    <dat_poc_putovanja>30.03.2022</dat_poc_putovanja>
+    <trajanje_putovanja>1.0</trajanje_putovanja>
+    <iznos_akontacije>50.000000</iznos_akontacije>
+    <ispl_akontacije>50.000000</ispl_akontacije>
+    <iznos_obracuna>410.000000</iznos_obracuna>
+    <iznos_razlika>-110.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+  <Table>
+    <pravnolice>Radio televizija Bosne i Hercegovine - BHRT</pravnolice>
+    <pdateStart>01.01.2022</pdateStart>
+    <pdateEnd>01.10.2022</pdateEnd>
+    <id>169</id>
+    <pnDatTime>29.09.2022 18:04</pnDatTime>
+    <pnWeek>39</pnWeek>
+    <pnYear>2022</pnYear>
+    <ime_prezime>Emir Habul</ime_prezime>
+    <radno_mjesto>SARADNICI</radno_mjesto>
+    <employee_id>245</employee_id>
+    <mjesto_putovanja>sa</mjesto_putovanja>
+    <mjesto_start>sa</mjesto_start>
+    <razlog_putovanja>test duplog broja protokola</razlog_putovanja>
+    <prev_text>Službeni auto</prev_text>
+    <dat_poc_putovanja>30.09.2022</dat_poc_putovanja>
+    <trajanje_putovanja>1.0</trajanje_putovanja>
+    <iznos_akontacije>450.000000</iznos_akontacije>
+    <ispl_akontacije>100.000000</ispl_akontacije>
+    <iznos_obracuna>1965.000000</iznos_obracuna>
+    <iznos_razlika>1865.000000</iznos_razlika>
+    <status_text>obracunfin</status_text>
+  </Table>
+</NewDataSet>

@@ -1,0 +1,178 @@
+﻿Imports System.Data
+Imports Microsoft.VisualBasic
+Imports MySql.Data
+Imports MySql.Data.MySqlClient
+Imports MySql.Data.Types
+
+Public Class ClsObustave
+
+
+    Public Sub New()
+
+        DtList = New DataTable
+        DtList.TableName = "dtObustave"
+
+        DtVrstaList = New DataTable
+        DtVrstaList.TableName = "dtVrstaObustave"
+
+        DtEvidList = New DataTable
+        DtEvidList.TableName = "dtEvidObustave"
+
+        LstEvidList = New List(Of Object)
+
+    End Sub
+
+    Public Property DtList As DataTable
+
+    Public Property DtVrstaList As DataTable
+
+    Public Property DtEvidList As DataTable
+
+    Public Property LstEvidList As List(Of Object)
+
+    Public Function getList(ByVal pEmpId As Integer) As DataTable
+
+        Dim myda As MySqlClient.MySqlDataAdapter
+        Dim mycmd As MySqlCommand
+
+        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
+            myconnection.Open()
+
+            mycmd = New MySqlCommand
+            mycmd.Connection = myconnection
+
+
+            Dim strSQL As String = <![CDATA[ 
+SELECT
+  id, idEmployee, idObustave, PartijaKred, Procenat, Zaduzenje, IznosRate, 
+  PocOtplate, KrajOtplate, 
+  BrojRata, IznosUplata, DatZadnjeUplate, 
+  RazlogPrekidaObustave, Aktivno, 
+  Atribut_1, TekuciObracun, 
+  Completed, DummyTimeStamp
+FROM
+`xfc_uposleni-obustave` WHERE idEmployee=@idEmployee;
+]]>.Value
+
+            mycmd.CommandText = strSQL
+            mycmd.Prepare()
+
+            mycmd.Parameters.AddWithValue("@idEmployee", pEmpId)
+
+            DtList.Clear()
+
+            Dim auxDtList As New DataTable
+
+            myda = New MySqlClient.MySqlDataAdapter(mycmd)
+            myda.Fill(auxDtList)
+
+            DtList = auxDtList.Clone
+            DtList.Columns("PocOtplate").DataType = System.Type.GetType("System.DateTime")
+            DtList.Columns("KrajOtplate").DataType = System.Type.GetType("System.DateTime")
+            DtList.Columns("DatZadnjeUplate").DataType = System.Type.GetType("System.DateTime")
+
+            DtList.Load(auxDtList.CreateDataReader, System.Data.LoadOption.OverwriteChanges)
+
+
+        End Using
+
+        Return DtList
+
+    End Function
+
+    Public Function getIdx(Optional ByVal pSfrReport As String = "000000") As Integer
+
+        If pSfrReport.Length = 0 Then Return -1
+        Dim idx As Integer = -1
+
+        For Each er In DtList.Rows
+
+            idx += 1
+            If er("Id") = pSfrReport Then
+                Exit For
+            End If
+        Next
+
+        Return idx
+    End Function
+
+    Public Function getIdx(ByVal pIdReport As Integer) As Integer
+
+        If pIdReport <= 0 Then Return -1
+        Dim idx As Integer = -1
+
+        For Each er In DtList.Rows
+
+            idx += 1
+            If er("id") = pIdReport Then
+                Exit For
+            End If
+        Next
+
+        Return idx
+    End Function
+
+    Public Function getId(ByVal pIdx As Integer) As Integer
+
+        Dim idx As Integer = -1
+        Dim retVal As String = ""
+
+        For Each er In DtList.Rows
+            idx += 1
+            If idx = pIdx Then
+                retVal = CInt(er("id"))
+                Exit For
+            End If
+        Next
+
+        Return retVal
+    End Function
+
+    Public Function getEvidList() As DataTable
+
+        Dim myda As MySqlClient.MySqlDataAdapter
+        Dim mycmd As MySqlCommand
+
+        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
+            myconnection.Open()
+
+            mycmd = New MySqlCommand
+            mycmd.Connection = myconnection
+
+
+            Dim strSQL As String = <![CDATA[ 
+SELECT
+  id, Sifra, Naziv, Kategorija, 
+  Banka, PoslovniPartner, 
+  Procenat, Iznos, 
+  Atribut_1, TekuciObracun, 
+  RacunZaUplatu, IznosUplate, 
+  DummyTimeStamp
+FROM
+evd_obustave;
+]]>.Value
+
+            mycmd.CommandText = strSQL
+            mycmd.Prepare()
+
+            'mycmd.Parameters.AddWithValue("@idEmployee", pEmpId)
+
+            DtEvidList.Clear()
+
+            myda = New MySqlClient.MySqlDataAdapter(mycmd)
+            myda.Fill(DtEvidList)
+
+            For Each r As DataRow In DtEvidList.Rows
+                LstEvidList.Add(New With {
+                Key .text = r.Item("Naziv"),
+                Key .value = r.Item("id")
+            })
+            Next
+
+        End Using
+
+        Return DtEvidList
+
+    End Function
+
+End Class

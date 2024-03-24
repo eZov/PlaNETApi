@@ -1,0 +1,1366 @@
+﻿Imports System
+Imports System.Text
+Imports MySql.Data.Types
+
+Imports Syncfusion.DocIO
+Imports Syncfusion.DocIO.DLS
+Imports System.ComponentModel
+
+
+Public Class ClsGodOdmori
+    Public cEmployeeId As Integer = -1
+    Public cFirstName As String = ""
+    Public cLastName As String = ""
+    Public cPersBroj As String = ""
+    Public cJMB As String = ""
+    Public cevd_godisnjiodmor_id As Integer = -1
+    Public cGodina As Integer = Nothing
+    Public cIzrDani As Integer = Nothing
+    Public cIskDani As Integer = Nothing
+    Public cRazlika As Integer = Nothing
+    Public cdatum As MySql.Data.Types.MySqlDateTime = Nothing
+    'Public Modified As MySql.Data.Types.MySqlDateTime
+    'Public Created As MySql.Data.Types.MySqlDateTime
+    Public crjesenje_status As Integer = Nothing
+    Public cmark_status As Integer = Nothing
+    Public cStaz_G As Integer = Nothing
+    Public cStaz_M As Integer = Nothing
+    Public cStaz_D As Integer = Nothing
+    Public cNeIskDani As Integer = Nothing
+    Public cGodinaNow As Integer
+    Public tekucePravnoLice As String
+
+    Public plan1StartDate As MySql.Data.Types.MySqlDateTime = Nothing
+    Public plan1EndDate As MySql.Data.Types.MySqlDateTime = Nothing
+    Public plan1Dani As Integer = 0
+    Public plan2StartDate As MySql.Data.Types.MySqlDateTime = Nothing
+    Public plan2EndDate As MySql.Data.Types.MySqlDateTime = Nothing
+    Public plan2Dani As Integer = 0
+
+    Public plan1StartDate2 As System.DateTime = Nothing
+    Public plan1EndDate2 As System.DateTime = Nothing
+    Public plan2StartDate2 As System.DateTime = Nothing
+    Public plan2EndDate2 As System.DateTime = Nothing
+
+
+
+    Public Sub New(ByVal EmployeeId As Integer, ByVal FirstName As String, ByVal LastName As String, _
+                   ByVal evd_godisnjiodmor_id As Integer, ByVal Godina As Integer, _
+                   ByVal IzrDani As Integer, ByVal IskDani As Integer, ByVal Razlika As Integer, _
+                   ByVal datum As MySql.Data.Types.MySqlDateTime, _
+                   ByVal rjesenje_status As Integer, ByVal mark_status As Integer, ByVal Staz_G As Integer, _
+                   ByVal Staz_M As Integer, ByVal Staz_D As Integer, ByVal NeIskDani As Integer, _
+                    ByVal cPersBroj As String, ByVal cJMB As String)
+
+        Try
+            Me.cGodinaNow = Now.Year
+
+            Me.cEmployeeId = EmployeeId
+            Me.cFirstName = FirstName
+            Me.cLastName = LastName
+
+            Me.cPersBroj = cPersBroj
+            Me.cJMB = cJMB
+
+            Me.cevd_godisnjiodmor_id = evd_godisnjiodmor_id
+            Me.cGodina = Godina
+            Me.cIzrDani = IzrDani
+            Me.cIskDani = IskDani
+            Me.cRazlika = Razlika
+
+
+            Me.crjesenje_status = rjesenje_status
+            Me.cmark_status = mark_status
+            Me.cStaz_G = Staz_G
+            Me.cStaz_M = Staz_M
+            Me.cStaz_D = Staz_D
+            Me.cNeIskDani = NeIskDani
+        Catch ex As Exception
+            Dim el As New ErrorsAndEvents.ErrorLogger
+            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+        End Try
+
+
+        Try
+            Me.cdatum = datum
+        Catch ex As Exception
+            Dim el As New ErrorsAndEvents.ErrorLogger
+            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+        End Try
+
+    End Sub
+
+    Public ReadOnly Property evd_godisnjiodmor_id() As Integer
+        Get
+            Return cevd_godisnjiodmor_id
+        End Get
+    End Property
+    Public ReadOnly Property Prezime() As String
+        Get
+            Return cLastName
+        End Get
+    End Property
+    Public ReadOnly Property Ime() As String
+        Get
+            Return cFirstName
+        End Get
+    End Property
+
+    Public ReadOnly Property Uposlenik() As String
+        Get
+            Return cLastName + " " + cFirstName
+        End Get
+    End Property
+
+    Public ReadOnly Property Godina() As Integer
+        Get
+            Return cGodina
+        End Get
+    End Property
+    Public ReadOnly Property Staz() As String
+        Get
+            Dim MyStringBuilder As New StringBuilder("")
+            MyStringBuilder.AppendFormat("{0:D2}-{1:D2}-{2:D2} ", Me.cStaz_G, Me.cStaz_M, Me.cStaz_D)
+            Return MyStringBuilder.ToString
+        End Get
+    End Property
+    Public ReadOnly Property DaniPoRjesenju() As Integer
+        Get
+            Return cIzrDani
+        End Get
+    End Property
+    Public ReadOnly Property NeIskDani() As Integer
+        Get
+            Return cNeIskDani
+        End Get
+    End Property
+    Public ReadOnly Property IskDani() As Integer
+        Get
+            Return cIskDani
+        End Get
+    End Property
+
+    Public ReadOnly Property Razlika() As Integer
+        Get
+            Return cRazlika
+        End Get
+    End Property
+    Public ReadOnly Property Rjesenje() As Boolean
+        Get
+            If Me.crjesenje_status <> 0 Then
+                Return True
+            ElseIf Me.crjesenje_status = 0 Then
+                Return False
+            End If
+        End Get
+    End Property
+    Public ReadOnly Property Oznaci() As Boolean
+        Get
+            If Me.cmark_status <> 0 Then
+                Return True
+            ElseIf Me.cmark_status = 0 Then
+                Return False
+            End If
+        End Get
+    End Property
+
+    Public ReadOnly Property PrviDioPocetak() As Date
+        Get
+            Return Me.plan1StartDate
+        End Get
+    End Property
+
+    Public ReadOnly Property PrviDioKraj() As Date
+        Get
+            Return Me.plan1EndDate
+        End Get
+    End Property
+
+    Public ReadOnly Property PrviDioDana() As Integer
+        Get
+            Return Me.plan1Dani
+        End Get
+    End Property
+
+    Public ReadOnly Property DrugiDioPocetak() As Date
+        Get
+            Return Me.plan2StartDate
+        End Get
+    End Property
+
+    Public ReadOnly Property DrugiDioKraj() As Date
+        Get
+            Return Me.plan2EndDate
+        End Get
+    End Property
+
+    Public ReadOnly Property DrugiDioDana() As Integer
+        Get
+            Return Me.plan2Dani
+        End Get
+    End Property
+
+
+    '#Region "___Planovi GO"
+
+    '    Public Shared Sub PlanGO_Create(ByRef pDbConnection As ClsDatabasePrement, ByVal pNazivDoc As String, _
+    '                             ByVal pOrgTopID As String, ByVal pOrgId As String, ByVal pGodina As Integer, _
+    '                             Optional ByVal pProtokol As String = "", Optional ByVal pPotpisnik As String = "")
+
+    '        Try
+
+    '            'SDF the database and get the NorthWind
+    '            AppDomain.CurrentDomain.SetData("SQLServerCompactEditionUnderWebHosting", True)
+    '            Dim table As New DataTable()
+    '            'Dim connectionstring As String = (Convert.ToString("Data Source = ") & dataPath) + "Northwind.sdf"
+    '            Dim conn As MySqlConnection = pDbConnection.DbConnection
+
+    '            Dim sqlText As String = "SELECT so.`Naziv`, so.`Sifra Nadnivo` FROM `sfr_organizacija` so WHERE so.`id`=?id;"
+    '            sqlText = sqlText.Replace("?id", pOrgTopID)
+
+    '            Dim dbInfo As MySqlClient.MySqlDataReader
+    '            Dim txtOrgJed As String = ""
+    '            Dim txtParOrgJed As String = ""
+    '            Dim txtSifra As String = ""
+
+    '            dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+    '            Do While dbInfo.Read
+    '                txtOrgJed = dbInfo!Naziv
+    '                txtParOrgJed = dbInfo!Naziv
+    '                txtSifra = dbInfo("Sifra Nadnivo")
+    '            Loop
+    '            dbInfo.Close()
+    '            dbInfo = Nothing
+    '            'conn.Open()
+
+    '            Try
+    '                If txtSifra.Length >= 3 Then
+    '                    sqlText = "SELECT so.`Naziv`, so.Sifra FROM `sfr_organizacija` so WHERE so.`Sifra`=?id;"
+    '                    sqlText = sqlText.Replace("?id", txtSifra)
+
+    '                    dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+    '                    Do While dbInfo.Read
+    '                        txtOrgJed = (dbInfo!Naziv) + vbNewLine + txtOrgJed
+    '                    Loop
+    '                    dbInfo.Close()
+    '                    dbInfo = Nothing
+    '                End If
+    '            Catch ex As Exception
+
+    '            End Try
+
+    '            sqlText = "CALL rpt_PlanGOByOrg2(?pOrgId, ?pGodina);"
+    '            sqlText = sqlText.Replace("?pOrgId", ClsDatabaseGeneral.DBText(pOrgId))
+    '            sqlText = sqlText.Replace("?pGodina", ClsDatabaseGeneral.DBNum(pGodina))
+
+    '            Dim adapter As New MySqlDataAdapter(sqlText, conn)
+    '            adapter.Fill(table)
+    '            adapter.Dispose()
+    '            'conn.Close()
+
+    '            ' Creating a new document.
+    '            Dim document As New WordDocument()
+    '            ' Adding a new section to the document.
+    '            Dim section As IWSection = document.AddSection()
+    '            section.PageSetup.Orientation = PageOrientation.Landscape
+
+    '            ' Set Margin of the document
+    '            section.PageSetup.Margins.All = 72
+    '            section.PageSetup.Margins.Top = 36
+    '            section.PageSetup.Margins.Bottom = 72
+    '            Dim paragraph As IWParagraph = section.AddParagraph()
+    '            'Format the heading.
+    '            Dim text As IWTextRange
+    '            'paragraph = section.AddParagraph()
+    '            'Format the heading.
+    '            text = paragraph.AppendText(pProtokol)
+    '            'text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 11.0F
+    '            text.CharacterFormat.TextColor = Color.Black
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left
+
+    '            paragraph = section.AddParagraph()
+    '            text = paragraph.AppendText("BHRT Plan za godišnji odmor " & pGodina.ToString & ". godine")
+    '            text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 14.0F
+    '            text.CharacterFormat.TextColor = Color.DarkBlue
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Center
+
+    '            paragraph.ParagraphFormat.BeforeSpacing = 14.0F
+
+
+
+    '            paragraph = section.AddParagraph()
+    '            'Format the heading.
+    '            text = paragraph.AppendText(txtOrgJed)
+    '            text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 14.0F
+    '            text.CharacterFormat.TextColor = Color.Black
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left
+    '            paragraph.ParagraphFormat.BeforeSpacing = 14.0F
+    '            paragraph.ParagraphFormat.LineSpacing = 7.0F
+    '            paragraph = section.AddParagraph()
+
+
+    '            'Create a new table
+    '            Dim textBody As WTextBody = section.Body
+    '            Dim docTable As IWTable = textBody.AddTable()
+
+    '            'Set the format for rows
+    '            Dim format As New RowFormat()
+    '            format.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.[Single]
+    '            format.Borders.LineWidth = 1.0F
+    '            format.Borders.Color = Color.Black
+
+    '            'Initialize number of rows and cloumns.
+    '            docTable.ResetCells(table.Rows.Count + 2, table.Columns.Count, format, 84)
+
+    '            'Repeat the header.
+    '            docTable.Rows(0).IsHeader = True
+    '            docTable.Rows(1).IsHeader = True
+
+    '            Dim colName As String
+
+    '            'Format the header rows
+    '            For c As Integer = 0 To table.Columns.Count - 1
+
+    '                Dim Cols As String() = table.Columns(c).ColumnName.Split("|"c)
+    '                colName = Cols(Cols.Length - 1)
+    '                Dim theadertext As IWTextRange = docTable.Rows(0).Cells(c).AddParagraph().AppendText(colName)
+    '                Dim theadertext2 As IWTextRange = docTable.Rows(1).Cells(c).AddParagraph().AppendText("")
+    '                theadertext.CharacterFormat.FontSize = 10.0F
+    '                theadertext.CharacterFormat.FontName = "Arial"
+    '                theadertext.CharacterFormat.Bold = True
+    '                theadertext.CharacterFormat.TextColor = Color.Black
+
+    '                theadertext2.CharacterFormat.FontSize = 10.0F
+    '                theadertext2.CharacterFormat.FontName = "Arial"
+    '                theadertext2.CharacterFormat.Bold = True
+    '                theadertext2.CharacterFormat.TextColor = Color.Black
+
+    '                'docTable.Rows(0).Cells(c).CellFormat.BackColor = Color.FromArgb(33, 67, 126)
+    '                docTable.Rows(0).Cells(c).CellFormat.BackColor = Color.LightGray
+    '                docTable.Rows(0).Cells(c).CellFormat.Borders.Color = Color.Black
+    '                docTable.Rows(0).Cells(c).CellFormat.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.None
+    '                docTable.Rows(0).Cells(c).CellFormat.Borders.LineWidth = 1.0F
+
+    '                docTable.Rows(0).Cells(c).CellFormat.Paddings.All = 2.5F
+
+    '                docTable.Rows(0).Cells(c).CellFormat.VerticalAlignment = Syncfusion.DocIO.DLS.VerticalAlignment.Middle
+
+    '                docTable.Rows(0).Height = 100.0F
+    '                docTable.Rows(0).RowFormat.HorizontalAlignment = RowAlignment.Center
+
+    '                docTable.Rows(1).Cells(c).CellFormat.BackColor = Color.LightGray
+    '                docTable.Rows(1).Cells(c).CellFormat.Borders.Color = Color.Black
+    '                docTable.Rows(1).Cells(c).CellFormat.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.None
+    '                docTable.Rows(1).Cells(c).CellFormat.Borders.LineWidth = 1.0F
+
+    '                docTable.Rows(1).Cells(c).CellFormat.Paddings.All = 2.5F
+
+    '                docTable.Rows(1).Cells(c).CellFormat.VerticalAlignment = Syncfusion.DocIO.DLS.VerticalAlignment.Middle
+
+    '                docTable.Rows(1).Height = 30.0F
+    '                docTable.Rows(1).RowFormat.HorizontalAlignment = RowAlignment.Center
+
+    '                Select Case c
+    '                    Case 0
+    '                        docTable.Rows(0).Cells(c).Width = 35.0F
+    '                    Case 1
+    '                        docTable.Rows(0).Cells(c).Width = 170.0F
+    '                    Case 2, 3, 4, 5, 6
+    '                        docTable.Rows(0).Cells(c).Width = 35.0F
+    '                        docTable.Rows(0).Cells(c).CellFormat.TextDirection = TextDirection.VerticalBottomToTop
+
+    '                    Case 7
+    '                        docTable.Rows(0).Cells(c).Width = 110.0F
+    '                        If TypeOf docTable.Rows(0).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                            Dim textRange As WTextRange = TryCast(docTable.Rows(0).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                            textRange.Text = "Godišnji odmor u jednom dijelu"
+    '                            FormatTextCell(textRange)
+    '                        End If
+
+    '                    Case 8, 9
+    '                        If TypeOf docTable.Rows(0).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                            Dim textRange As WTextRange = TryCast(docTable.Rows(0).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                            textRange.Text = "Godišnji odmor u dva dijela"
+    '                            FormatTextCell(textRange)
+    '                            docTable.Rows(0).Cells(c).Paragraphs(0).ParagraphFormat.HorizontalAlignment = DLS.HorizontalAlignment.Center
+    '                        End If
+
+    '                        docTable.Rows(0).Cells(c).Width = 110.0F
+    '                    Case Else
+    '                        docTable.Rows(0).Cells(c).Width = 70.0F
+    '                End Select
+
+    '                Select Case c
+    '                    Case 0
+    '                        docTable.Rows(1).Cells(c).Width = 35.0F
+    '                        docTable.ApplyVerticalMerge(c, 0, 1)
+    '                    Case 1
+    '                        docTable.Rows(1).Cells(c).Width = 170.0F
+    '                        docTable.ApplyVerticalMerge(c, 0, 1)
+    '                    Case 2, 3, 4, 5, 6
+    '                        docTable.Rows(1).Cells(c).Width = 35.0F
+    '                        docTable.Rows(1).Cells(c).CellFormat.TextDirection = TextDirection.VerticalBottomToTop
+    '                        docTable.ApplyVerticalMerge(c, 0, 1)
+    '                    Case 7
+    '                        docTable.Rows(1).Cells(c).Width = 110.0F
+    '                        docTable.ApplyVerticalMerge(c, 0, 1)
+    '                    Case 8, 9
+
+    '                        docTable.ApplyHorizontalMerge(0, 8, 9)
+    '                        If c = 8 Then
+    '                            docTable.Rows(1).Cells(c).Paragraphs(0).Text = "I dio godišnjeg odmora"
+    '                            If TypeOf docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                                Dim textRange As WTextRange = TryCast(docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                                textRange.Text = "I dio godišnjeg odmora"
+    '                                FormatTextCell(textRange)
+    '                            End If
+    '                        ElseIf c = 9 Then
+    '                            If TypeOf docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                                Dim textRange As WTextRange = TryCast(docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                                textRange.Text = "II dio godišnjeg odmora"
+    '                                FormatTextCell(textRange)
+    '                            End If
+    '                        End If
+    '                        docTable.Rows(1).Cells(c).Paragraphs(0).ParagraphFormat.HorizontalAlignment = DLS.HorizontalAlignment.Center
+    '                        docTable.Rows(1).Cells(c).Width = 110.0F
+
+    '                    Case Else
+    '                        docTable.Rows(1).Cells(c).Width = 70.0F
+    '                End Select
+    '            Next
+
+    '            'Format the table body rows
+    '            For r As Integer = 1 To table.Rows.Count
+    '                For c As Integer = 0 To table.Columns.Count - 1
+    '                    Dim Value As String = table.Rows(r - 1)(c).ToString()
+    '                    Dim theadertext As IWTextRange = docTable.Rows(r + 1).Cells(c).AddParagraph().AppendText(Value)
+    '                    theadertext.CharacterFormat.FontSize = 10.0F
+    '                    theadertext.CharacterFormat.FontName = "Arial"
+
+    '                    'docTable.Rows(r + 1).Cells(c).CellFormat.BackColor = If(((r And 1) = 0), Color.FromArgb(237, 240, 246), Color.FromArgb(192, 201, 219))
+    '                    docTable.Rows(r + 1).Cells(c).CellFormat.BackColor = If(((r And 1) = 0), Color.FromArgb(227, 230, 226), Color.FromArgb(191, 191, 191))
+
+    '                    docTable.Rows(r + 1).Cells(c).CellFormat.Borders.Color = Color.Black
+    '                    docTable.Rows(r + 1).Cells(c).CellFormat.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.[Single]
+    '                    docTable.Rows(r + 1).Cells(c).CellFormat.Borders.LineWidth = 0.5F
+    '                    docTable.Rows(r + 1).Cells(c).CellFormat.VerticalAlignment = Syncfusion.DocIO.DLS.VerticalAlignment.Middle
+    '                    docTable.Rows(r + 1).Cells(c).CellFormat.TextDirection = Syncfusion.DocIO.DLS.TextDirection.Horizontal
+    '                    docTable.Rows(r + 1).RowFormat.HorizontalAlignment = RowAlignment.Center
+
+    '                    Select Case c
+    '                        Case 0
+    '                            docTable.Rows(r + 1).Cells(c).Width = 35.0F
+    '                        Case 1
+    '                            docTable.Rows(r + 1).Cells(c).Width = 170.0F
+    '                        Case 2, 3, 4, 5, 6
+    '                            docTable.Rows(r + 1).Cells(c).Width = 35.0F
+    '                        Case 7
+    '                            docTable.Rows(r + 1).Cells(c).Width = 110.0F
+    '                        Case 8, 9
+    '                            docTable.Rows(r + 1).Cells(c).Width = 110.0F
+    '                        Case Else
+    '                            docTable.Rows(r + 1).Cells(c).Width = 70.0F
+    '                    End Select
+    '                Next
+    '            Next
+
+    '            paragraph = section.AddParagraph()
+    '            text = paragraph.AppendText("Rukovodilac organizacione cjeline:")
+    '            text = paragraph.AppendText("__________________________________")
+    '            If pPotpisnik.Length > 3 Then
+    '                text = paragraph.AppendText(pPotpisnik)
+    '            End If
+    '            text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 10.0F
+    '            text.CharacterFormat.TextColor = Color.Black
+    '            paragraph.ParagraphFormat.BeforeSpacing = 20.0F
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left
+
+    '            paragraph = section.AddParagraph()
+    '            'text = paragraph.AppendText("Generalni direktor BHRT:")
+    '            'text = paragraph.AppendText("__________________________________(")
+    '            'text = paragraph.AppendText(pPotpisnik + ")")
+    '            text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 10.0F
+    '            text.CharacterFormat.TextColor = Color.Black
+    '            paragraph.ParagraphFormat.BeforeSpacing = 15.0F
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left
+
+
+    '            ' Add a footer paragraph text to the document.
+    '            Dim footerPar As New WParagraph(document)
+    '            ' Add text.
+    '            footerPar.AppendText(txtParOrgJed & vbTab & vbTab & vbTab & "BHRT goNET-2016   " & vbTab & vbTab & " " & Now().ToShortDateString & " " & Now.ToShortTimeString)
+    '            ' Add page and Number of pages field to the document.
+    '            footerPar.AppendText(vbTab & vbTab & vbTab & "Strana ")
+    '            footerPar.AppendField("Page", Syncfusion.DocIO.FieldType.FieldPage)
+    '            footerPar.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Right
+    '            section.HeadersFooters.Footer.Paragraphs.Add(footerPar)
+
+
+    '            'Saving the document as .docx
+    '            document.Save(pNazivDoc, FormatType.Docx)
+    '            'Message box confirmation to view the created document.
+    '            'If MessageBoxAdv.Show("Da li želite pregledati dokument?", "Dokument ke kreiran", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+    '            'Try
+    '            'Launching the MS Word file using the default Application.[MS Word Or Free WordViewer]
+    '            'System.Diagnostics.Process.Start(pNazivDoc)
+    '            'Exit
+    '            'Me.Close()
+    '            'Catch ex As Win32Exception
+    '            '   MessageBoxAdv.Show("Word 2007 nije instalisan na ovom računaru")
+    '            '  Console.WriteLine(ex.ToString())
+    '            'End Try
+    '            '   End If
+
+    '        Catch Ex As Exception
+    '            ' Shows the Message box with Exception message, if an exception throws.
+    '            MessageBoxAdv.Show(Ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.[Error])
+    '        Finally
+    '        End Try
+    '    End Sub
+
+    '    Public Shared Sub PlanGO2_Create(ByRef pDbConnection As ClsDatabasePrement, ByVal pNazivDoc As String, _
+    '                         ByVal pOrgTopID As String, ByVal pOrgId As String, ByVal pGodina As Integer, _
+    '                         Optional ByVal pProtokol As String = "", Optional ByVal pPotpisnik As String = "")
+
+    '        Try
+
+    '            'SDF the database and get the NorthWind
+    '            AppDomain.CurrentDomain.SetData("SQLServerCompactEditionUnderWebHosting", True)
+    '            Dim table As New DataTable()
+    '            Dim sOrgJedList As New List(Of OrgJedInfo)
+
+    '            If pOrgTopID.Length = 0 Then Exit Sub
+
+    '            'Dim connectionstring As String = (Convert.ToString("Data Source = ") & dataPath) + "Northwind.sdf"
+    '            Dim conn As MySqlConnection = pDbConnection.DbConnection
+
+    '            Dim sqlText As String = "SELECT so.`Naziv`, so.`Sifra Nadnivo` FROM `sfr_organizacija` so WHERE so.`id`=?id;"
+    '            sqlText = sqlText.Replace("?id", pOrgTopID)
+
+    '            Dim dbInfo As MySqlClient.MySqlDataReader
+    '            Dim txtOrgJed As String = ""
+    '            Dim txtParOrgJed As String = ""
+    '            Dim txtFootOrgJed As String = ""
+    '            Dim txtSifra As String = ""
+
+    '            dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+    '            Do While dbInfo.Read
+    '                txtOrgJed = dbInfo!Naziv
+    '                txtParOrgJed = dbInfo!Naziv
+    '                txtSifra = dbInfo("Sifra Nadnivo")
+    '            Loop
+    '            dbInfo.Close()
+    '            dbInfo = Nothing
+    '            'conn.Open()
+
+    '            Try
+    '                If txtSifra.Length >= 3 Then
+    '                    sqlText = "SELECT so.`Naziv`, so.Sifra FROM `sfr_organizacija` so WHERE so.`Sifra`=?id;"
+    '                    sqlText = sqlText.Replace("?id", txtSifra)
+
+    '                    dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+    '                    Do While dbInfo.Read
+    '                        txtOrgJed = (dbInfo!Naziv) + vbNewLine + txtOrgJed
+    '                        txtFootOrgJed = (dbInfo!Naziv)
+    '                    Loop
+    '                    dbInfo.Close()
+    '                    dbInfo = Nothing
+    '                End If
+    '            Catch ex As Exception
+
+    '            End Try
+
+
+    '            'conn.Close()
+
+    '            ' Creating a new document.
+    '            Dim document As New WordDocument()
+    '            ' Adding a new section to the document.
+    '            Dim section As IWSection = document.AddSection()
+    '            section.PageSetup.Orientation = PageOrientation.Landscape
+
+    '            ' Set Margin of the document
+    '            section.PageSetup.Margins.All = 72
+    '            section.PageSetup.Margins.Top = 36
+    '            section.PageSetup.Margins.Bottom = 72
+    '            Dim paragraph As IWParagraph = section.AddParagraph()
+    '            'Format the heading.
+    '            Dim text As IWTextRange
+    '            'paragraph = section.AddParagraph()
+    '            'Format the heading.
+    '            text = paragraph.AppendText(pProtokol)
+    '            'text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 11.0F
+    '            text.CharacterFormat.TextColor = Color.Black
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left
+
+    '            paragraph = section.AddParagraph()
+    '            text = paragraph.AppendText("BHRT Plan za godišnji odmor " & pGodina.ToString & ". godine")
+    '            text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 14.0F
+    '            text.CharacterFormat.TextColor = Color.DarkGray
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Center
+
+    '            paragraph.ParagraphFormat.BeforeSpacing = 14.0F
+    '            paragraph.ParagraphFormat.AfterSpacing = 30.0F
+
+    '            Dim orgJed As OrgJedInfo
+
+    '            sqlText = <sql text="SELECT DISTINCT so.id, so.`Sifra`,so.`Naziv`, so1.`Naziv` AS Naziv1,IF(so2.`Sifra`=1,'',so2.`Naziv`) AS Naziv2 FROM `sfr_organizacija` so 
+    '                                 INNER JOIN `evd_employees` e ON so.`id`=e.`DepartmentUP` 
+    'LEFT JOIN `sfr_organizacija` so1 ON so.`Sifra Nadnivo` = so1.`Sifra`                                 
+    'LEFT JOIN `sfr_organizacija` so2 ON so1.`Sifra Nadnivo` = so2.`Sifra`      
+    '                                 WHERE so.`id`IN(?id) ORDER BY so.`Sifra`;"/>.Attribute("text").Value
+    '            sqlText = sqlText.Replace("?id", pOrgId)
+
+    '            dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+    '            Do While dbInfo.Read
+    '                orgJed.ID = dbInfo!id
+    '                'orgJed.Naziv = dbInfo!Naziv + " / " + dbInfo!Naziv1 + " / " + dbInfo!Naziv2
+    '                orgJed.Naziv = dbInfo!Naziv2 + " / " + dbInfo!Naziv1 + " / " + dbInfo!Naziv
+    '                If orgJed.Naziv.Substring(0, 2) = " /" Then
+    '                    orgJed.Naziv = orgJed.Naziv.Substring(2, orgJed.Naziv.Length - 2)
+    '                End If
+    '                sOrgJedList.Add(orgJed)
+    '            Loop
+    '            dbInfo.Close()
+    '            dbInfo = Nothing
+
+    '            For Each el As OrgJedInfo In sOrgJedList
+
+
+
+    '                sqlText = "CALL rpt_PlanGOByOrg2(?pOrgId, ?pGodina);"
+    '                sqlText = sqlText.Replace("?pOrgId", ClsDatabaseGeneral.DBText(el.ID))
+    '                sqlText = sqlText.Replace("?pGodina", ClsDatabaseGeneral.DBNum(pGodina))
+
+    '                Dim adapter As New MySqlDataAdapter(sqlText, conn)
+    '                table.Clear()
+    '                adapter.Fill(table)
+    '                adapter.Dispose()
+
+
+    '                'paragraph = section.AddParagraph()
+
+
+    '                'Create a new table
+    '                Dim textBody As WTextBody = section.Body
+    '                Dim docTable As IWTable = textBody.AddTable()
+
+    '                'Set the format for rows
+    '                Dim format As New RowFormat()
+    '                format.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.[Single]
+    '                format.Borders.LineWidth = 1.0F
+    '                format.Borders.Color = Color.Black
+
+    '                'Initialize number of rows and cloumns.
+    '                docTable.ResetCells(table.Rows.Count + 3, table.Columns.Count, format, 84)
+
+    '                'Repeat the header.
+    '                docTable.Rows(0).IsHeader = True
+    '                docTable.Rows(1).IsHeader = True
+    '                docTable.Rows(2).IsHeader = True
+    '                Dim colName As String
+
+    '                'Format the header rows
+    '                For c As Integer = 0 To table.Columns.Count - 1
+
+    '                    Dim Cols As String() = table.Columns(c).ColumnName.Split("|"c)
+    '                    colName = Cols(Cols.Length - 1)
+    '                    Dim theadertext As IWTextRange = docTable.Rows(1).Cells(c).AddParagraph().AppendText(colName)
+    '                    Dim theadertext2 As IWTextRange = docTable.Rows(2).Cells(c).AddParagraph().AppendText("")
+    '                    theadertext.CharacterFormat.FontSize = 10.0F
+    '                    theadertext.CharacterFormat.FontName = "Arial"
+    '                    theadertext.CharacterFormat.Bold = True
+    '                    theadertext.CharacterFormat.TextColor = Color.Black
+
+    '                    theadertext2.CharacterFormat.FontSize = 10.0F
+    '                    theadertext2.CharacterFormat.FontName = "Arial"
+    '                    theadertext2.CharacterFormat.Bold = True
+    '                    theadertext2.CharacterFormat.TextColor = Color.Black
+
+    '                    Dim theadertext0 As IWTextRange = docTable.Rows(0).Cells(c).AddParagraph().AppendText(el.Naziv)
+    '                    theadertext0.CharacterFormat.FontSize = 12.0F
+    '                    theadertext0.CharacterFormat.FontName = "Arial"
+    '                    theadertext0.CharacterFormat.Bold = True
+    '                    theadertext0.CharacterFormat.TextColor = Color.Black
+
+    '                    'docTable.Rows(1).Cells(c).CellFormat.BackColor = Color.FromArgb(33, 67, 126)
+    '                    For iRow As Integer = 0 To 2
+    '                        docTable.Rows(iRow).Cells(c).CellFormat.BackColor = Color.LightGray
+    '                        docTable.Rows(iRow).Cells(c).CellFormat.Borders.Color = Color.Black
+    '                        docTable.Rows(iRow).Cells(c).CellFormat.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.None
+    '                        docTable.Rows(iRow).Cells(c).CellFormat.Borders.LineWidth = 1.0F
+
+    '                        docTable.Rows(iRow).Cells(c).CellFormat.Paddings.All = 2.5F
+
+    '                        docTable.Rows(iRow).Cells(c).CellFormat.VerticalAlignment = Syncfusion.DocIO.DLS.VerticalAlignment.Middle
+
+    '                        docTable.Rows(0).Height = 50.0F
+    '                        docTable.Rows(1).Height = 100.0F
+    '                        docTable.Rows(2).Height = 30.0F
+
+    '                        docTable.Rows(iRow).RowFormat.HorizontalAlignment = RowAlignment.Center
+    '                    Next
+    '                    docTable.Rows(0).Cells(c).CellFormat.BackColor = Color.White
+
+    '                    Select Case c
+    '                        Case 0
+    '                            docTable.Rows(1).Cells(c).Width = 35.0F
+    '                            docTable.Rows(0).Cells(c).Width = 35.0F
+
+    '                        Case 1
+    '                            docTable.Rows(1).Cells(c).Width = 170.0F
+    '                            docTable.Rows(0).Cells(c).Width = 170.0F
+    '                        Case 2, 3, 4, 5, 6
+    '                            docTable.Rows(1).Cells(c).Width = 35.0F
+    '                            docTable.Rows(1).Cells(c).CellFormat.TextDirection = TextDirection.VerticalBottomToTop
+    '                            docTable.Rows(0).Cells(c).Width = 35.0F
+    '                        Case 7
+    '                            docTable.Rows(1).Cells(c).Width = 110.0F
+    '                            If TypeOf docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                                Dim textRange As WTextRange = TryCast(docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                                textRange.Text = "Godišnji odmor u jednom dijelu"
+    '                                FormatTextCell(textRange)
+    '                            End If
+    '                            docTable.Rows(0).Cells(c).Width = 110.0F
+    '                        Case 8, 9
+    '                            If TypeOf docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                                Dim textRange As WTextRange = TryCast(docTable.Rows(1).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                                textRange.Text = "Godišnji odmor u dva dijela"
+    '                                FormatTextCell(textRange)
+    '                                docTable.Rows(1).Cells(c).Paragraphs(0).ParagraphFormat.HorizontalAlignment = DLS.HorizontalAlignment.Center
+    '                            End If
+
+    '                            docTable.Rows(1).Cells(c).Width = 110.0F
+    '                            docTable.Rows(0).Cells(c).Width = 110.0F
+    '                        Case Else
+    '                            docTable.Rows(1).Cells(c).Width = 70.0F
+    '                            docTable.Rows(0).Cells(c).Width = 70.0F
+    '                    End Select
+
+    '                    Select Case c
+    '                        Case 0
+    '                            docTable.ApplyHorizontalMerge(0, 0, 9)
+    '                            'docTable.Rows(0).Cells(c).Width = 350.0F
+
+    '                            docTable.Rows(2).Cells(c).Width = 35.0F
+    '                            docTable.ApplyVerticalMerge(c, 1, 2)
+    '                        Case 1
+    '                            docTable.Rows(2).Cells(c).Width = 170.0F
+    '                            docTable.ApplyVerticalMerge(c, 1, 2)
+    '                        Case 2, 3, 4, 5, 6
+    '                            docTable.Rows(2).Cells(c).Width = 35.0F
+    '                            docTable.Rows(2).Cells(c).CellFormat.TextDirection = TextDirection.VerticalBottomToTop
+    '                            docTable.ApplyVerticalMerge(c, 1, 2)
+    '                        Case 7
+    '                            docTable.Rows(2).Cells(c).Width = 110.0F
+    '                            docTable.ApplyVerticalMerge(c, 1, 2)
+    '                        Case 8, 9
+
+    '                            docTable.ApplyHorizontalMerge(1, 8, 9)
+    '                            If c = 8 Then
+    '                                docTable.Rows(2).Cells(c).Paragraphs(0).Text = "I dio godišnjeg odmora"
+    '                                If TypeOf docTable.Rows(2).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                                    Dim textRange As WTextRange = TryCast(docTable.Rows(2).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                                    textRange.Text = "I dio godišnjeg odmora"
+    '                                    FormatTextCell(textRange)
+    '                                End If
+    '                            ElseIf c = 9 Then
+    '                                If TypeOf docTable.Rows(2).Cells(c).Paragraphs(0).ChildEntities(0) Is WTextRange Then
+    '                                    Dim textRange As WTextRange = TryCast(docTable.Rows(2).Cells(c).Paragraphs(0).ChildEntities(0), WTextRange)
+    '                                    textRange.Text = "II dio godišnjeg odmora"
+    '                                    FormatTextCell(textRange)
+    '                                End If
+    '                            End If
+    '                            docTable.Rows(2).Cells(c).Paragraphs(0).ParagraphFormat.HorizontalAlignment = DLS.HorizontalAlignment.Center
+    '                            docTable.Rows(2).Cells(c).Width = 110.0F
+
+    '                        Case Else
+    '                            docTable.Rows(2).Cells(c).Width = 70.0F
+    '                    End Select
+    '                Next
+
+    '                'Format the table body rows
+    '                For r As Integer = 1 To table.Rows.Count
+    '                    For c As Integer = 0 To table.Columns.Count - 1
+    '                        Dim Value As String = table.Rows(r - 1)(c).ToString()
+    '                        Dim theadertext As IWTextRange = docTable.Rows(r + 2).Cells(c).AddParagraph().AppendText(Value)
+    '                        theadertext.CharacterFormat.FontSize = 10.0F
+    '                        theadertext.CharacterFormat.FontName = "Arial"
+
+    '                        'docTable.Rows(r + 2).Cells(c).CellFormat.BackColor = If(((r And 1) = 0), Color.FromArgb(237, 240, 246), Color.FromArgb(192, 201, 219))
+    '                        'docTable.Rows(r + 2).Cells(c).CellFormat.BackColor = If(((r And 1) = 0), Color.FromArgb(227, 230, 226), Color.FromArgb(191, 191, 191))
+    '                        docTable.Rows(r + 2).Cells(c).CellFormat.BackColor = If(((r And 1) = 0), Color.FromArgb(245, 246, 250), Color.FromArgb(255, 255, 255))
+
+    '                        docTable.Rows(r + 2).Cells(c).CellFormat.Borders.Color = Color.Black
+    '                        docTable.Rows(r + 2).Cells(c).CellFormat.Borders.BorderType = Syncfusion.DocIO.DLS.BorderStyle.[Single]
+    '                        docTable.Rows(r + 2).Cells(c).CellFormat.Borders.LineWidth = 0.5F
+    '                        docTable.Rows(r + 2).Cells(c).CellFormat.VerticalAlignment = Syncfusion.DocIO.DLS.VerticalAlignment.Middle
+    '                        docTable.Rows(r + 2).Cells(c).CellFormat.TextDirection = Syncfusion.DocIO.DLS.TextDirection.Horizontal
+    '                        docTable.Rows(r + 2).RowFormat.HorizontalAlignment = RowAlignment.Center
+
+    '                        Select Case c
+    '                            Case 0
+    '                                docTable.Rows(r + 2).Cells(c).Width = 35.0F
+    '                            Case 1
+    '                                docTable.Rows(r + 2).Cells(c).Width = 170.0F
+    '                            Case 2, 3, 4, 5, 6
+    '                                docTable.Rows(r + 2).Cells(c).Width = 35.0F
+    '                            Case 7
+    '                                docTable.Rows(r + 2).Cells(c).Width = 110.0F
+    '                            Case 8, 9
+    '                                docTable.Rows(r + 2).Cells(c).Width = 110.0F
+    '                            Case Else
+    '                                docTable.Rows(r + 2).Cells(c).Width = 70.0F
+    '                        End Select
+    '                    Next
+    '                Next
+
+
+    '            Next
+
+
+    '            paragraph = section.AddParagraph()
+    '            text = paragraph.AppendText("Rukovodilac organizacione cjeline:")
+    '            text = paragraph.AppendText("__________________________________")
+    '            If pPotpisnik.Length > 3 Then
+    '                text = paragraph.AppendText(pPotpisnik)
+    '            End If
+    '            text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 10.0F
+    '            text.CharacterFormat.TextColor = Color.Black
+    '            paragraph.ParagraphFormat.BeforeSpacing = 20.0F
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left
+
+    '            paragraph = section.AddParagraph()
+    '            'text = paragraph.AppendText("Generalni direktor BHRT:")
+    '            'text = paragraph.AppendText("__________________________________(")
+    '            'text = paragraph.AppendText(pPotpisnik + ")")
+    '            text.CharacterFormat.Bold = True
+    '            text.CharacterFormat.FontName = "Arial"
+    '            text.CharacterFormat.FontSize = 10.0F
+    '            text.CharacterFormat.TextColor = Color.Black
+    '            paragraph.ParagraphFormat.BeforeSpacing = 15.0F
+    '            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Left
+
+
+    '            ' Add a footer paragraph text to the document.
+    '            Dim footerPar As New WParagraph(document)
+    '            ' Add text.
+    '            footerPar.AppendText(txtParOrgJed & vbTab & vbTab & vbTab & "BHRT goNET-2016   " & vbTab & vbTab & " " & Now().ToShortDateString & " " & Now.ToShortTimeString)
+    '            ' Add page and Number of pages field to the document.
+    '            footerPar.AppendText(vbTab & vbTab & vbTab & "Strana ")
+    '            footerPar.AppendField("Page", Syncfusion.DocIO.FieldType.FieldPage)
+    '            footerPar.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Right
+    '            section.HeadersFooters.Footer.Paragraphs.Add(footerPar)
+
+
+    '            'Saving the document as .docx
+    '            document.Save(pNazivDoc, FormatType.Docx)
+    '            'Message box confirmation to view the created document.
+    '            'If MessageBoxAdv.Show("Da li želite pregledati dokument?", "Dokument ke kreiran", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+    '            'Try
+    '            'Launching the MS Word file using the default Application.[MS Word Or Free WordViewer]
+    '            'System.Diagnostics.Process.Start(pNazivDoc)
+    '            'Exit
+    '            'Me.Close()
+    '            'Catch ex As Win32Exception
+    '            '   MessageBoxAdv.Show("Word 2007 nije instalisan na ovom računaru")
+    '            '  Console.WriteLine(ex.ToString())
+    '            'End Try
+    '            '   End If
+
+    '        Catch Ex As Exception
+    '            ' Shows the Message box with Exception message, if an exception throws.
+    '            MessageBoxAdv.Show(Ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.[Error])
+    '        Finally
+    '        End Try
+    '    End Sub
+
+    '    Public Shared Sub PostaviPlanove(ByRef pDatabase As ClsDatabasePrement, _
+    '                              ByVal pVrstaRjes As Integer, ByVal pMD5 As String, ByVal pTekucaGodina As Integer, _
+    '                              ByVal pDatumRjesenja As Date, ByVal pPotpisnikRjesenja As String, ByVal pOrgjed As String)
+
+    '        Dim sql As String = ""
+
+    '        sql = "CALL `GO_PostaviPlanGOByOrg`(?pVrstaRjes, ?pOrgjed, ?pTekucaGodina, ?pMD5, ?pDatumRjesenja, ?pPotpisnikRjesenja);"
+    '        sql = sql.Replace("?pVrstaRjes", ClsDatabaseGeneral.DBNum(pVrstaRjes))
+    '        sql = sql.Replace("?pOrgjed", ClsDatabaseGeneral.DBText(pOrgjed))
+    '        sql = sql.Replace("?pTekucaGodina", ClsDatabaseGeneral.DBNum(pTekucaGodina))
+    '        sql = sql.Replace("?pMD5", ClsDatabaseGeneral.DBText(pMD5))
+    '        sql = sql.Replace("?pDatumRjesenja", ClsDatabaseGeneral.DBDate(pDatumRjesenja))
+    '        sql = sql.Replace("?pPotpisnikRjesenja", ClsDatabaseGeneral.DBText(pPotpisnikRjesenja))
+
+
+    '        ' Ako je izdato rješenje, nema promjene u danima
+    '        'If myForm_Locked Then Exit Sub
+
+    '        Try
+    '            pDatabase.PreparedCommandCreate()
+    '            pDatabase.PreparedCommand.CommandText = sql
+    '            pDatabase.PreparedCommand.ExecuteNonQuery()
+    '        Catch ex As Exception
+    '            Dim el As New ErrorsAndEvents.ErrorLogger
+    '            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+    '        End Try
+
+    '    End Sub
+
+
+    '    Private Shared Sub FormatTextCell(ByVal textRange As WTextRange)
+    '        textRange.CharacterFormat.FontSize = 11.0F
+    '        textRange.CharacterFormat.FontName = "Arial"
+    '        textRange.CharacterFormat.Bold = True
+    '        textRange.CharacterFormat.TextColor = Color.Black
+
+    '    End Sub
+
+    '    Structure OrgJedInfo
+    '        Public ID As Integer
+    '        Public Naziv As String
+
+    '        Public Sub New(ByVal _id As Integer, ByVal _naziv As String)
+    '            ID = _id
+    '            Naziv = _naziv
+    '        End Sub
+    '    End Structure
+    '#End Region
+
+    '#Region "___Shared"
+
+    '    Public Shared Function PreklapanjeGO(ByRef pDatabase As ClsDatabasePrement, ByVal pEmployeeId As Integer,
+    '                                        ByVal pSDate As Date, ByVal pEDate As Date) As Boolean
+
+    '        Dim _Result As Boolean = False
+
+    '        Dim sql As String = ""
+
+    '        'sql = "CALL `GO_PreklapanjeGO`(?pEmployeeId, ?pGodina, ?pSDate, ?pEDate);"
+    '        'sql = sql.Replace("?pEmployeeId", ClsDatabaseGeneral.DBNum(pEmployeeId))
+    '        'sql = sql.Replace("?pGodina", ClsDatabaseGeneral.DBText(pGodina))
+    '        'sql = sql.Replace("?pSDate", ClsDatabaseGeneral.DBDate(pSDate))
+    '        'sql = sql.Replace("?pEDate", ClsDatabaseGeneral.DBDate(pEDate))
+
+
+
+    '        Dim cmd As New MySqlCommand()
+
+    '        Try
+    '            cmd.Connection = pDatabase.DbConnection
+    '            cmd.CommandText = "GO_PreklapanjeGO"
+    '            cmd.CommandType = CommandType.StoredProcedure
+    '            cmd.Parameters.AddWithValue("@pEmployeeId", pEmployeeId)
+    '            cmd.Parameters("@pEmployeeId").Direction = ParameterDirection.Input
+    '            'cmd.Parameters.AddWithValue("@pGodina", pGodina)
+    '            'cmd.Parameters("@pGodina").Direction = ParameterDirection.Input
+    '            cmd.Parameters.AddWithValue("@pSDate", pSDate)
+    '            cmd.Parameters("@pSDate").Direction = ParameterDirection.Input
+    '            cmd.Parameters.AddWithValue("@pEDate", pEDate)
+    '            cmd.Parameters("@pEDate").Direction = ParameterDirection.Input
+
+    '            cmd.Parameters.AddWithValue("@pResult", MySqlDbType.String)
+    '            cmd.Parameters("@pResult").Direction = ParameterDirection.Output
+    '            cmd.ExecuteNonQuery()
+
+    '            Dim iResult As Integer = cmd.Parameters("@pResult").Value
+    '            If iResult > 0 Then _Result = True
+    '        Catch ex As Exception
+    '            Dim el As New ErrorsAndEvents.ErrorLogger
+    '            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+    '        End Try
+
+
+    '        Try
+    '            'pDatabase.PreparedCommandCreate()
+    '            'pDatabase.PreparedCommand.CommandText = sql
+    '            'pDatabase.PreparedCommand.ExecuteNonQuery()
+    '        Catch ex As Exception
+    '            Dim el As New ErrorsAndEvents.ErrorLogger
+    '            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+    '        End Try
+
+    '        Return _Result
+
+    '    End Function
+
+    '    Public Shared Function ConvertNullableDateToDateTime(ByRef sNullableDate As String) As DateTime
+    '        Dim retDate As DateTime
+
+    '        Try
+    '            Dim sDay As String = sNullableDate.Substring(0, 2)
+    '            Dim sMonth As String = sNullableDate.Substring(3, 2)
+    '            Dim sYear As String = sNullableDate.Substring(6, 4)
+    '            retDate = New DateTime(sYear, sMonth, sDay)
+    '            Return retDate
+    '        Catch ex As Exception
+    '            Dim el As New ErrorsAndEvents.ErrorLogger
+    '            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+    '            'MsgBox("Error logged.")
+    '        End Try
+
+    '        Return New DateTime("1900", "01", "01")
+    '    End Function
+    '    Public Shared Function ConvertNullableDateToMySqlDateTime(ByRef sNullableDate As String) As MySqlDateTime
+    '        Dim retDate As MySqlDateTime
+
+    '        Try
+    '            Dim sDay As String = sNullableDate.Substring(0, 2)
+    '            Dim sMonth As String = sNullableDate.Substring(3, 2)
+    '            Dim sYear As String = sNullableDate.Substring(6, 4)
+    '            retDate = New MySql.Data.Types.MySqlDateTime(sYear, sMonth, sDay, 12, 0, 0, 0)
+    '            Return retDate
+    '        Catch ex As Exception
+    '            Dim el As New ErrorsAndEvents.ErrorLogger
+    '            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+    '            'MsgBox("Error logged.")
+    '        End Try
+
+    '        Return New MySql.Data.Types.MySqlDateTime("1900", "01", "01", 12, 0, 0, 0)
+    '    End Function
+
+    '    Public Shared Function CountRadniDani(ByRef dtpStartDate As Date, ByRef dtpEndDate As Date) As Integer
+    '        Dim count = 0
+    '        Dim startDate As Date = dtpStartDate
+    '        Dim endDate As Date
+
+    '        Dim totalDays = (dtpEndDate - dtpStartDate).Days
+    '        Try
+    '            For i As Integer = 0 To totalDays
+    '                Dim weekday As DayOfWeek = startDate.AddDays(i).DayOfWeek
+    '                ' Kontrola praznika - varijabla DayIsHoliday
+    '                endDate = startDate.AddDays(i)
+
+    '                If weekday <> DayOfWeek.Saturday AndAlso weekday <> DayOfWeek.Sunday AndAlso Not (gCalendar.GetDay(endDate).IsHoliday) Then
+    '                    count += 1
+    '                End If
+    '            Next
+    '        Catch ex As Exception
+
+    '        End Try
+
+
+    '        Return count
+    '    End Function
+
+    '    Public Shared Function CountEndDate(ByRef dtpStartDate As Date, ByVal numDays As Integer) As Date
+    '        Dim count As Integer = 0
+    '        Dim countWork As Integer = 0
+    '        Dim startDate As Date = dtpStartDate
+    '        Dim endDate As Date = Nothing
+    '        Dim endDateFin As Date = Nothing
+    '        'Dim totalDays = (dtpEndDate - dtpStartDate).Days
+    '        Try
+    '            For i As Integer = 0 To 100
+    '                Dim weekday As DayOfWeek = startDate.AddDays(i).DayOfWeek
+    '                ' Kontrola praznika - varijabla DayIsHoliday
+
+    '                endDate = startDate.AddDays(i)
+    '                If weekday = DayOfWeek.Saturday Or weekday = DayOfWeek.Sunday Or gCalendar.GetDay(endDate).IsHoliday Then
+    '                    count += 1
+    '                ElseIf (countWork >= numDays) Then
+    '                    Exit For
+    '                Else
+    '                    countWork += 1
+    '                End If
+    '                'If i > numDays Then Exit For
+    '            Next
+
+    '            endDate = startDate.AddDays(count + numDays - 1)
+
+    '        Catch ex As Exception
+
+    '        End Try
+
+
+
+    '        For i As Integer = 0 To 10 Step 1
+    '            endDateFin = endDate.AddDays(-i)
+    '            Dim weekday As DayOfWeek = endDateFin.DayOfWeek
+    '            ' Kontrola praznika - varijabla DayIsHoliday
+
+
+    '            If weekday = DayOfWeek.Saturday Or weekday = DayOfWeek.Sunday Or gCalendar.GetDay(endDateFin).IsHoliday Then
+    '                count += 1
+    '            Else
+    '                Exit For
+    '            End If
+    '            'If i > numDays Then Exit For
+    '        Next
+
+
+
+    '        Return endDateFin
+
+    '    End Function
+
+    '    Public Shared Function CountNextWorkDay(ByRef dtpStartDate As Date) As Integer
+    '        Dim count = 0
+    '        Dim startDate As Date = dtpStartDate
+    '        Dim endDate As Date
+
+    '        'Dim totalDays = (dtpEndDate - dtpStartDate).Days
+    '        Try
+
+    '            For i As Integer = 1 To 100
+    '                Dim weekday As DayOfWeek = startDate.AddDays(i).DayOfWeek
+    '                ' Kontrola praznika - varijabla DayIsHoliday
+
+    '                endDate = startDate.AddDays(i)
+    '                If weekday = DayOfWeek.Saturday Or weekday = DayOfWeek.Sunday Or gCalendar.GetDay(endDate).IsHoliday Then
+    '                    count += 1
+    '                Else
+    '                    Exit For
+    '                End If
+    '                'If i > numDays Then Exit For
+    '            Next
+
+    '            endDate = startDate.AddDays(count)
+    '        Catch ex As Exception
+
+    '        End Try
+
+    '        Return count + 1
+    '    End Function
+
+    '#End Region
+End Class
+
+
+'Public Class ClsGodOdm_Postavke
+'    Public cGodOdm_Postavke As New List(Of ClsGodOdm_PostavkeOne)
+
+'    Public Sub New(ByVal pPravnoLie As String)
+'        ' ----- Fill in the data.
+'        Dim sqlText As String
+'        Dim dbInfo As MySqlClient.MySqlDataReader = Nothing
+
+'        Me.cGodOdm_Postavke.Clear()
+'        Dim sPravnoLice As String = ""
+
+'        Select Case pPravnoLie
+'            Case "FBiH"
+'                sPravnoLice = "BHF"
+'            Case "RS"
+'                sPravnoLice = "BHR"
+'            Case "DB"
+'                sPravnoLice = "BHB"
+'        End Select
+
+'        Try
+'            sqlText = "SELECT DISTINCT egop.`Kriterij`, egop.`Naziv`, egop.`Forma` FROM `evd_godisnjiodmor_postavke` egop " _
+'            & " WHERE (egop.`Kriterij` LIKE '" & sPravnoLice & "000') OR egop.`Kriterij` LIKE '" & sPravnoLice & "DOD%' ORDER BY egop.`Kriterij`;"
+'            dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+
+'            While (dbInfo.Read)
+'                cGodOdm_Postavke.Add(New ClsGodOdm_PostavkeOne(ClsDatabaseGeneral.DBGetText(dbInfo!Kriterij), ClsDatabaseGeneral.DBGetText(dbInfo!Naziv), ClsDatabaseGeneral.DBGetInteger(dbInfo!Forma), 0))
+
+'            End While
+'        Catch ex As Exception
+'            Dim el As New ErrorsAndEvents.ErrorLogger
+'            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+'        Finally
+'            If dbInfo IsNot Nothing Then
+'                dbInfo.Close()
+'            End If
+'            dbInfo = Nothing
+'        End Try
+
+'    End Sub
+
+'    Public ReadOnly Property Lista() As List(Of ClsGodOdm_PostavkeOne)
+'        Get
+'            Return cGodOdm_Postavke
+'        End Get
+'    End Property
+
+'    Public Sub LoadVrsteRjes(ByRef pCbo As ComboBox, Optional ByVal pDocument As String = "godisnji_odmor", Optional ByRef pStatus As Integer = 1)
+'        Dim sqlText As String
+'        Dim dbInfo As MySqlClient.MySqlDataReader
+
+
+'        Try
+'            pCbo.Items.Clear()
+
+'            Select Case pStatus
+'                Case 1
+'                    sqlText = "SELECT naziv, rjesenje_status, template_md5_m,template_md5_f,filename_code  FROM evd_doc_status WHERE document='" + pDocument + "'"
+
+'                Case -1
+'                    sqlText = "SELECT naziv, rjesenje_status, template_md5_m,template_md5_f,filename_code  FROM evd_doc_status WHERE rjesenje_status<>0 AND document='" + pDocument + "'"
+
+'                Case 0
+'                    sqlText = "SELECT naziv, rjesenje_status, template_md5_m,template_md5_f,filename_code  FROM evd_doc_status WHERE rjesenje_status=0 AND document='" + pDocument + "'"
+
+'                Case Else
+'                    sqlText = "SELECT naziv, rjesenje_status, template_md5_m,template_md5_f,filename_code  FROM evd_doc_status WHERE document='" + pDocument + "'"
+'            End Select
+
+'            dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+
+'            While (dbInfo.Read)
+'                pCbo.Items.Add(New ClsUgoRjes_StatusOne(ClsDatabaseGeneral.DBGetInteger(dbInfo!rjesenje_status),
+'                                   ClsDatabaseGeneral.DBGetText(dbInfo!naziv), ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_m),
+'                                   ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_f), ClsDatabaseGeneral.DBGetText(dbInfo!filename_code)))
+'            End While
+'        Catch ex As Exception
+'            Dim el As New ErrorsAndEvents.ErrorLogger
+'            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+'        Finally
+'            dbInfo.Close()
+'            dbInfo = Nothing
+'        End Try
+'    End Sub
+
+'    Public Function GetVrsteRjes(Optional ByVal pDocument As String = "godisnji_odmor") As List(Of ClsUgoRjes_StatusOne)
+'        Dim sqlText As String
+'        Dim dbInfo As MySqlClient.MySqlDataReader = Nothing
+'        Dim _ListRjes As New List(Of ClsUgoRjes_StatusOne)
+
+'        Try
+'            _ListRjes.Clear()
+'            sqlText = "SELECT naziv, rjesenje_status, template_md5_m,template_md5_f,filename_code  FROM evd_doc_status WHERE document='" + pDocument + "'"
+'            dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+
+'            While (dbInfo.Read)
+'                _ListRjes.Add(New ClsUgoRjes_StatusOne(ClsDatabaseGeneral.DBGetInteger(dbInfo!rjesenje_status),
+'                                   ClsDatabaseGeneral.DBGetText(dbInfo!naziv), ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_m),
+'                                   ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_f), ClsDatabaseGeneral.DBGetText(dbInfo!filename_code)))
+'            End While
+'        Catch ex As Exception
+'            Dim el As New ErrorsAndEvents.ErrorLogger
+'            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+'        Finally
+'            If dbInfo IsNot Nothing Then
+'                dbInfo.Close()
+'            End If
+'            dbInfo = Nothing
+'        End Try
+
+'        Return _ListRjes
+
+'    End Function
+
+'    'Public Sub LoadVrsteRjes2(ByRef pCbo As ComboBox)
+'    '    Dim sqlText As String
+'    '    Dim dbInfo As MySqlClient.MySqlDataReader
+
+
+'    '    Try
+'    '        pCbo.Items.Clear()
+'    '        sqlText = "SELECT naziv, rjesenje_status, template_md5_m,template_md5_f,filename_code  FROM evd_doc_status WHERE document='godisnji_odmor2'"
+'    '        dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+
+'    '        While (dbInfo.Read)
+'    '            pCbo.Items.Add(New ClsUgoRjes_StatusOne(ClsDatabaseGeneral.DBGetInteger(dbInfo!rjesenje_status), _
+'    '                               ClsDatabaseGeneral.DBGetText(dbInfo!naziv), ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_m), _
+'    '                               ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_f), ClsDatabaseGeneral.DBGetText(dbInfo!filename_code)))
+'    '        End While
+'    '    Catch ex As Exception
+'    '        Dim el As New ErrorsAndEvents.ErrorLogger
+'    '        el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+'    '    Finally
+'    '        dbInfo.Close()
+'    '        dbInfo = Nothing
+'    '    End Try
+'    'End Sub
+
+'    Public Sub LoadVrsteUgo(ByRef pCbo As ComboBox)
+'        Dim sqlText As String
+'        Dim dbInfo As MySqlClient.MySqlDataReader
+
+
+'        Try
+'            pCbo.Items.Clear()
+'            sqlText = "SELECT naziv, rjesenje_status, template_md5_m,template_md5_f, filename_code  FROM evd_doc_status WHERE document='ugovor'"
+'            dbInfo = ClsDatabaseGeneral.CreateReader(sqlText)
+
+'            While (dbInfo.Read)
+'                pCbo.Items.Add(New ClsUgoRjes_StatusOne(ClsDatabaseGeneral.DBGetInteger(dbInfo!rjesenje_status), _
+'                                   ClsDatabaseGeneral.DBGetText(dbInfo!naziv), ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_m), _
+'                                   ClsDatabaseGeneral.DBGetText(dbInfo!template_md5_f), ClsDatabaseGeneral.DBGetText(dbInfo!filename_code)))
+'            End While
+'        Catch ex As Exception
+'            Dim el As New ErrorsAndEvents.ErrorLogger
+'            el.WriteToErrorLog(ex.Message, ex.StackTrace, "Error")
+'        Finally
+'            dbInfo.Close()
+'            dbInfo = Nothing
+'        End Try
+'    End Sub
+'End Class
+
+'Public Class ClsGodOdm_PostavkeOne
+'    Public cRowId As Integer = -1
+
+'    Public cKriterij As String
+'    Public cNaziv As String
+
+'    Public cForm As Integer
+'    Public cBrojDana As Integer
+
+'    Public Sub New()
+
+'    End Sub
+
+'    Public Sub New(ByVal pKriterij As String, ByVal pNaziv As String, ByVal pForm As Integer, ByVal pBrojDana As Integer)
+'        cKriterij = pKriterij
+'        cNaziv = pNaziv
+'        cForm = pForm
+'        cBrojDana = pBrojDana
+'    End Sub
+'End Class
+
+
+'Public Class ClsUgoRjes_StatusOne
+'    Public cRjesStatus As Integer
+'    Public cNaziv As String
+'    Public cMD5_M As String
+'    Public cMD5_F As String
+'    Public cFileName_Code As String
+
+'    Public cMD5_M_filename As String
+'    Public cMD5_F_filename As String
+
+'    Public Sub New()
+
+'    End Sub
+
+'    Public ReadOnly Property Status()
+'        Get
+'            Return cRjesStatus
+'        End Get
+'    End Property
+'    Public ReadOnly Property Naziv()
+'        Get
+'            Return cNaziv
+'        End Get
+'    End Property
+
+
+'    Public Sub New(ByVal pRjesStatus As Integer, ByVal pNaziv As String, ByVal pMD5 As String, ByVal pMD5_F As String, _
+'                   ByVal pFileName_Code As String)
+'        cRjesStatus = pRjesStatus
+'        cNaziv = pNaziv
+'        cMD5_M = pMD5
+'        cMD5_F = pMD5_F
+'        cFileName_Code = pFileName_Code
+'    End Sub
+'End Class
+
+
+
+

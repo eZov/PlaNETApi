@@ -1,0 +1,105 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Table">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" type="xs:int" minOccurs="0" />
+                <xs:element name="employee_id" type="xs:int" minOccurs="0" />
+                <xs:element name="ime_prezime" type="xs:string" minOccurs="0" />
+                <xs:element name="radno_mjesto" type="xs:string" minOccurs="0" />
+                <xs:element name="mjesto_start" type="xs:string" minOccurs="0" />
+                <xs:element name="mjesto_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="razlog_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="dat_poc_putovanja" type="xs:string" minOccurs="0" />
+                <xs:element name="trajanje_putovanja" type="xs:decimal" minOccurs="0" />
+                <xs:element name="relacija" type="xs:string" minOccurs="0" />
+                <xs:element name="prev_text" type="xs:string" minOccurs="0" />
+                <xs:element name="prev_auto" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prev_vlauto" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prev_avion" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prev_autobus" type="xs:boolean" minOccurs="0" />
+                <xs:element name="prevoz_voz" type="xs:boolean" minOccurs="0" />
+                <xs:element name="troskovi_putovanja_knjizenje" type="xs:string" minOccurs="0" />
+                <xs:element name="aktivnost" type="xs:string" minOccurs="0" />
+                <xs:element name="org_jed_naziv" type="xs:string" minOccurs="0" />
+                <xs:element name="org_jed" type="xs:string" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_a" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_b" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_c" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ukupnitroskovi_d" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_obracuna" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_razlika" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_dnevnice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="proc_dnevnice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="broj_dnevnica" type="xs:decimal" minOccurs="0" />
+                <xs:element name="akontacija_dnevnice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="akontacija_nocenje" type="xs:decimal" minOccurs="0" />
+                <xs:element name="akontacija_ostalo" type="xs:decimal" minOccurs="0" />
+                <xs:element name="iznos_akontacije" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ispl_akontacije" type="xs:decimal" minOccurs="0" />
+                <xs:element name="odobrena_akontacija" type="xs:boolean" minOccurs="0" />
+                <xs:element name="vrsta_naloga" type="xs:int" minOccurs="0" />
+                <xs:element name="status_naloga" type="xs:int" minOccurs="0" />
+                <xs:element name="dummytimestamp" type="xs:string" minOccurs="0" />
+                <xs:element name="status_text" type="xs:string" minOccurs="0" />
+                <xs:element name="EmployeeID" type="xs:int" minOccurs="0" />
+                <xs:element name="FirstName" type="xs:string" minOccurs="0" />
+                <xs:element name="LastName" type="xs:string" minOccurs="0" />
+                <xs:element name="epotpis" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Table>
+    <id>101</id>
+    <employee_id>893</employee_id>
+    <ime_prezime>Ružica Zorić</ime_prezime>
+    <radno_mjesto>Inženjer I</radno_mjesto>
+    <mjesto_start>SA</mjesto_start>
+    <mjesto_putovanja>VG</mjesto_putovanja>
+    <razlog_putovanja>Prezentacija</razlog_putovanja>
+    <dat_poc_putovanja>21-10-2021</dat_poc_putovanja>
+    <trajanje_putovanja>3.0</trajanje_putovanja>
+    <relacija>SA VG SA</relacija>
+    <prev_text>Vlastiti auto</prev_text>
+    <prev_auto>false</prev_auto>
+    <prev_vlauto>false</prev_vlauto>
+    <prev_avion>false</prev_avion>
+    <prev_autobus>false</prev_autobus>
+    <prevoz_voz>false</prevoz_voz>
+    <troskovi_putovanja_knjizenje>1050403</troskovi_putovanja_knjizenje>
+    <aktivnost>99</aktivnost>
+    <org_jed_naziv>Sektor RTV Produkcija</org_jed_naziv>
+    <org_jed>4110/-20 / -</org_jed>
+    <ukupnitroskovi_a>62.500000</ukupnitroskovi_a>
+    <ukupnitroskovi_b>133.000000</ukupnitroskovi_b>
+    <ukupnitroskovi_c>130.000000</ukupnitroskovi_c>
+    <ukupnitroskovi_d>0.000000</ukupnitroskovi_d>
+    <iznos_obracuna>325.500000</iznos_obracuna>
+    <iznos_razlika>30.500000</iznos_razlika>
+    <iznos_dnevnice>25.000000</iznos_dnevnice>
+    <proc_dnevnice>100.00</proc_dnevnice>
+    <broj_dnevnica>3.0</broj_dnevnica>
+    <akontacija_dnevnice>75.000000</akontacija_dnevnice>
+    <akontacija_nocenje>150.000000</akontacija_nocenje>
+    <akontacija_ostalo>70.000000</akontacija_ostalo>
+    <iznos_akontacije>295.000000</iznos_akontacije>
+    <ispl_akontacije>0.000000</ispl_akontacije>
+    <odobrena_akontacija>false</odobrena_akontacija>
+    <vrsta_naloga>0</vrsta_naloga>
+    <status_naloga>45</status_naloga>
+    <dummytimestamp>07-11-2021 13:00:08</dummytimestamp>
+    <status_text>popunautoku</status_text>
+    <EmployeeID>893</EmployeeID>
+    <FirstName>Ružica</FirstName>
+    <LastName>Zorić</LastName>
+    <epotpis />
+  </Table>
+</NewDataSet>

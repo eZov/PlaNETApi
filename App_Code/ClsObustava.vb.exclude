@@ -1,0 +1,34 @@
+﻿Imports Microsoft.VisualBasic
+
+Public Class ClsObustava
+    Public Property Id As Integer
+
+    Public Property EmployeeId As Integer
+    Public Property idObustave As Integer
+
+    Public Property PartijaKred As String
+
+    Public Property Procenat As Double
+    Public Property Zaduzenje As Double
+    Public Property IznosRate As Double
+
+    Public Property PocOtplate As Date
+    Public Property KrajOtplate As Date
+
+    Public Property BrojRata As Integer
+
+    Public Property IznosUplata As Double
+
+    Public Property DatZadnjeUplate As Date
+
+    Public Property RazlogPrekidaObustave As String
+
+    Public Property Aktivno As Boolean
+
+    Public Property Atribut_1 As String
+    Public Property TekuciObracun As Integer
+
+    Public Property Completed As Boolean
+
+    Public Property DummyTimeStamp As DateTime
+End Class

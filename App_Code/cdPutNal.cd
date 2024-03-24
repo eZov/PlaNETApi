@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ngApiDbFiles">
+    <Position X="0.5" Y="1" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AhAgAAAAgAQAAAEAAAAIAAAAAAEAIiACAIgAAQAAAAA=</HashCode>
+      <FileName>App_Code\ngApiDbFiles.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngFileToUpload">
+    <Position X="0.5" Y="5.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAIgAAAAAAAABACAAAAAAAAAAAAIAAAAAAAABAAAA=</HashCode>
+      <FileName>App_Code\ngFileToUpload.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NgApiPnPutniNalog">
+    <Position X="4.5" Y="1" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAARBRFAvAQhAYAhAMqAAIiB0RIgYAEEAECQQAERhAA=</HashCode>
+      <FileName>App_Code\NgApiPnPutniNalog.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NgESignature">
+    <Position X="12.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAACAAAAIAAAAAAAAAAACAEAAAAAAQAA=</HashCode>
+      <FileName>App_Code\NgESignature.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NgECertificate">
+    <Position X="15.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ICEAgCAAAAAAAAIAIAAgAAgAoAAAAkAAAKAYAgAgAgA=</HashCode>
+      <FileName>App_Code\NgECertificate.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ngPnPutniNalog">
+    <Position X="8.75" Y="1" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAwAAgAFAAEADABAAEAIDEIZRBAgAgjQBQQIAEQsA=</HashCode>
+      <FileName>App_Code\NgPnPutniNalog.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
