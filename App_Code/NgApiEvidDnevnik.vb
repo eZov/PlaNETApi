@@ -874,17 +874,19 @@ CALL EVDwb_ins2evid(@employeeID, @MM, @YYYY);
 
     Public Sub del2Evidencije()
         Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
-        Dim strSQL As String
+        Dim strSQLes, strSQLep As String
         Dim DtList As New DataTable
 
-        strSQL = <![CDATA[ 
+        strSQLes = <![CDATA[ 
 DELETE es.*
 FROM evd_scheduledata es
 WHERE
 es.OwnerId = @employeeID
 AND MONTH(es.ProgramStartTime) = @MM
 AND YEAR(es.ProgramStartTime) = @YYYY;
+    ]]>.Value
 
+        strSQLep = <![CDATA[ 
 DELETE ep.*
 FROM evd_prisustva ep
 WHERE 
@@ -901,7 +903,7 @@ AND YEAR(ep.datum) = @YYYY;
 
             mycmd.Connection = myconnection
 
-            mycmd.CommandText = strSQL
+            mycmd.CommandText = strSQLes
 
 
             mycmd.Parameters.Clear()
@@ -913,7 +915,22 @@ AND YEAR(ep.datum) = @YYYY;
             Try
                 mycmd.ExecuteNonQuery()
             Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
 
+            mycmd.CommandText = strSQLep
+
+
+            mycmd.Parameters.Clear()
+            mycmd.Parameters.AddWithValue("@employeeID", Me.EmployeeID)
+            mycmd.Parameters.AddWithValue("@MM", Me.MM)
+            mycmd.Parameters.AddWithValue("@YYYY", Me.YYYY)
+            mycmd.Prepare()
+
+            Try
+                mycmd.ExecuteNonQuery()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
             End Try
 
         End Using
