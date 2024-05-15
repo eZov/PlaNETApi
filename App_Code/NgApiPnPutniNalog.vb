@@ -2979,44 +2979,63 @@ WHERE m.Email=@user_email;
     Public Function insPutNalNalogDet(ByRef pPutNalNalogID As Integer) As Boolean
 
         Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
-        Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
-        strSQL = <![CDATA[
+
+        Using myconnection As New MySqlConnection(ConnectionString)
+            myconnection.Open()
+
+            Dim mycmd As MySqlCommand = myconnection.CreateCommand()
+
+
+
+            Try
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_obracun ( pn_id, pn_oblast, order_id)
 VALUES (@pPutNalNalog, 1, 1);
+    ]]>.Value
+
+                mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalNalogID)
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery()
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_obracun ( pn_id, pn_oblast, order_id)
 VALUES (@pPutNalNalog, 2, 1);
+    ]]>.Value
+
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_obracun ( pn_id, pn_oblast, order_id)
 VALUES (@pPutNalNalog, 3, 1);
+    ]]>.Value
+
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_obracun ( pn_id, pn_oblast, order_id)
 VALUES (@pPutNalNalog, 4, 1);
     ]]>.Value
 
+                mycmd.Prepare()
 
-        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
-            myconnection.Open()
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
 
-            Dim mycmd As New MySql.Data.MySqlClient.MySqlCommand
-
-            mycmd.Connection = myconnection
-
-            mycmd.CommandText = strSQL
-
-
-            mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalNalogID)
-            mycmd.Prepare()
-
-            Try
-                _RowsAffected = mycmd.ExecuteNonQuery()
-
-                If _RowsAffected > 0 Then
-                    Return True
-                End If
 
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
+
+
+            If _RowsAffected > 0 Then
+                Return True
+            End If
 
         End Using
 
@@ -3071,48 +3090,87 @@ VALUES (@pPutNalNalog);
     Public Function insPutNalNalogDetIzv(ByRef pPutNalID As Integer) As Boolean
 
         Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
-        Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
-        strSQL = <![CDATA[
+
+        Using myconnection As New MySqlConnection(ConnectionString)
+            myconnection.Open()
+
+            Dim mycmd As MySqlCommand = myconnection.CreateCommand()
+
+            'mycmd.Connection = myconnection
+
+
+            Try
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_izvjestaj_dod ( pn_id, pn_oblast, relacija, ostali_troskovi, obracun_ostalih_troskova, order_id)
 VALUES (@pPutNalNalog, 1, 'polazak-povratak', 0, NULL, 0);
+    ]]>.Value
+
+                mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalID)
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery()
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_izvjestaj_dod ( pn_id, pn_oblast, relacija, obracun_ostalih_troskova, order_id)
 VALUES (@pPutNalNalog, 4, '***', 'Putarina', 1);
+    ]]>.Value
+
+                'mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalID)
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_izvjestaj_dod ( pn_id, pn_oblast, relacija, obracun_ostalih_troskova, order_id)
 VALUES (@pPutNalNalog, 4, '***', 'Noćenje', 2);
+    ]]>.Value
+
+                'mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalID)
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_izvjestaj_dod ( pn_id, pn_oblast, relacija, obracun_ostalih_troskova, order_id)
 VALUES (@pPutNalNalog, 4, '***', 'Parking', 3);
+    ]]>.Value
+
+                'mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalID)
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_izvjestaj_dod ( pn_id, pn_oblast, relacija, obracun_ostalih_troskova, order_id)
 VALUES (@pPutNalNalog, 4, '***', 'Gorivo', 4);
+    ]]>.Value
+
+                'mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalID)
+                mycmd.Prepare()
+
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_izvjestaj_dod ( pn_id, pn_oblast, relacija, obracun_ostalih_troskova, order_id)
 VALUES (@pPutNalNalog, 4, '***', 'Ostalo', 5);
     ]]>.Value
 
+                'mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalID)
+                mycmd.Prepare()
 
-        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
-            myconnection.Open()
-
-            Dim mycmd As New MySql.Data.MySqlClient.MySqlCommand
-
-            mycmd.Connection = myconnection
-
-            mycmd.CommandText = strSQL
-
-
-            mycmd.Parameters.AddWithValue("@pPutNalNalog", pPutNalID)
-            mycmd.Prepare()
-
-            Try
-                _RowsAffected = mycmd.ExecuteNonQuery()
-
-                If _RowsAffected > 0 Then
-                    Return True
-                End If
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
 
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try
+
+
+            If _RowsAffected > 0 Then
+                Return True
+            End If
 
         End Using
 
@@ -3124,14 +3182,32 @@ VALUES (@pPutNalNalog, 4, '***', 'Ostalo', 5);
     Public Function updPutNalStatus(ByVal pPutNalID As Integer, ByVal pStatus As String, ByVal pUserEmpId As Integer) As Boolean
 
         Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
-        Dim strSQL As String
 
-        strSQL = <![CDATA[
-            UPDATE `putninalog` pn, `putninalog_status` pns 
+
+        Using myconnection As New MySqlConnection(ConnectionString)
+            myconnection.Open()
+
+            Dim mycmd As MySqlCommand = myconnection.CreateCommand()
+
+            Try
+
+
+                mycmd.CommandText = <![CDATA[
+UPDATE `putninalog` pn, `putninalog_status` pns 
 SET pn.`status_naloga` = pns.id
 WHERE pn.id = @pPutNalID
 AND pns.status_text = @pStatus; 
+    ]]>.Value
 
+
+                mycmd.Parameters.AddWithValue("@pPutNalID", pPutNalID)
+                mycmd.Parameters.AddWithValue("@pStatus", pStatus)
+                mycmd.Parameters.AddWithValue("@pUserEmpId", pUserEmpId)
+
+                mycmd.Prepare()
+                mycmd.ExecuteNonQuery()
+
+                mycmd.CommandText = <![CDATA[
 INSERT INTO putninalog_odobravanje (
    pn_id, status_id, employee_id
 )
@@ -3141,24 +3217,9 @@ WHERE pn.id = @pPutNalID
 AND pns.status_text = @pStatus; 
     ]]>.Value
 
-
-        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
-            myconnection.Open()
-
-            Dim mycmd As New MySql.Data.MySqlClient.MySqlCommand
-
-            mycmd.Connection = myconnection
-
-            mycmd.CommandText = strSQL
-
-
-            mycmd.Parameters.AddWithValue("@pPutNalID", pPutNalID)
-            mycmd.Parameters.AddWithValue("@pStatus", pStatus)
-            mycmd.Parameters.AddWithValue("@pUserEmpId", pUserEmpId)
-            mycmd.Prepare()
-
-            Try
+                mycmd.Prepare()
                 mycmd.ExecuteNonQuery()
+
                 Return True
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
