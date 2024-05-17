@@ -11,6 +11,8 @@ Imports Syncfusion.Linq
 Imports System.Drawing
 Imports Syncfusion.Pdf.Parsing
 Imports System.Net.Mail
+Imports System.Web
+Imports System.Collections.Generic
 
 Public Class JwtputnalController
     Inherits ApiController
@@ -4716,39 +4718,39 @@ Public Class JwtputnalController
 
             If _parSendEmail AndAlso _retValue = True Then
 
-                    Dim _parEmployeeId As Integer = _ApiSession.getEmployeeId(valueLogin.Email)
-                    Dim _ApiEmployee As New NgApiEmployee()
-                    Dim _employee As NgEmployee = _ApiEmployee.listItem(_parEmployeeId)
+                Dim _parEmployeeId As Integer = _ApiSession.getEmployeeId(valueLogin.Email)
+                Dim _ApiEmployee As New NgApiEmployee()
+                Dim _employee As NgEmployee = _ApiEmployee.listItem(_parEmployeeId)
 
-                    'Dim _ApiEmails As New NgApiEmail()
-                    Dim _ApiEmails As New NgApiEmailNET(_ApiSession)
-                    _ApiEmails.setSmtpFrom("info@mperun.net", "Perun - poslovni portal BHRT")
-
-
-                    Dim _keyValues As New Hashtable()
-                    Select Case _ApiSession.Role
-                        Case "uposlenik"
-                            _keyValues.Add("%__UserName__%", _employee.emp_username)
-                            _keyValues.Add("%__UserPass__%", "bhrt" + _parEmployeeId.ToString)
-
-                            _ApiEmails.sendByTemplate(_parEmployeeId, _keyValues, "email-changepass")
+                'Dim _ApiEmails As New NgApiEmail()
+                Dim _ApiEmails As New NgApiEmailNET(_ApiSession)
+                _ApiEmails.setSmtpFrom("info@mperun.net", "Perun - poslovni portal BHRT")
 
 
-                        Case "administrator"
-                            _keyValues.Add("%__UserName__%", _employee.emp_username)
-                            _keyValues.Add("%__UserPass__%", "bhrt" + _parEmployeeId.ToString)
+                Dim _keyValues As New Hashtable()
+                Select Case _ApiSession.Role
+                    Case "uposlenik"
+                        _keyValues.Add("%__UserName__%", _employee.emp_username)
+                        _keyValues.Add("%__UserPass__%", "bhrt" + _parEmployeeId.ToString)
 
-                            _ApiEmails.sendByTemplate(_parEmployeeId, _keyValues, "email-resetpass")
+                        _ApiEmails.sendByTemplate(_parEmployeeId, _keyValues, "email-changepass")
 
 
-                    End Select
+                    Case "administrator"
+                        _keyValues.Add("%__UserName__%", _employee.emp_username)
+                        _keyValues.Add("%__UserPass__%", "bhrt" + _parEmployeeId.ToString)
+
+                        _ApiEmails.sendByTemplate(_parEmployeeId, _keyValues, "email-resetpass")
 
 
-                End If
+                End Select
 
-            Else
 
-                Return New Results.StatusCodeResult(HttpStatusCode.Forbidden, Request)
+            End If
+
+        Else
+
+            Return New Results.StatusCodeResult(HttpStatusCode.Forbidden, Request)
         End If
 
 

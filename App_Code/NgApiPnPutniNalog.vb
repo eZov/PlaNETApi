@@ -1,4 +1,6 @@
-﻿Imports System.Data
+﻿Imports System
+Imports System.Collections.Generic
+Imports System.Data
 Imports System.Globalization
 Imports System.IO
 Imports System.Security.Cryptography.X509Certificates
@@ -4107,7 +4109,7 @@ WHERE pn_id=@pn_id;
                 _RowsAffected = mycmd.ExecuteNonQuery()
 
                 mycmd.CommandText = strSQL2
-    
+
 
                 mycmd.Parameters.Clear()
                 mycmd.Parameters.AddWithValue("@pn_id", pPutNalID)
@@ -4715,14 +4717,34 @@ AND ep.`aktivan` = -1;
     Public Function insPutNalESignature(ByRef pESignature As NgESignature, ByVal pPnDoc As Integer, ByVal pSignPos As Integer) As Boolean
 
         Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
-        Dim strSQL As String
 
-        strSQL = <![CDATA[
+        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
+            myconnection.Open()
+
+            Dim mycmd As MySqlCommand = myconnection.CreateCommand()
+            Dim _RowsAffected As Integer = -1
+
+
+
+            Try
+                mycmd.CommandText = <![CDATA[
 REPLACE INTO putninalog_potpisi (pn_id, pn_esignature, pn_doc, pn_potpis, evd_potpisi_id, STATUS)
 VALUES
   (
     @pPutNalID, @pESignatue, @pn_doc, @pn_potpis, @evd_potpisi_id, -1);
+    ]]>.Value
 
+
+                mycmd.Parameters.AddWithValue("@pPutNalID", pESignature.pPutNalID)
+                mycmd.Parameters.AddWithValue("@pESignatue", pESignature.pPutNalESignature)
+                mycmd.Parameters.AddWithValue("@evd_potpisi_id", pESignature.ePublicKeyId)      '''' pESignature.ePublicKeyId (isto što i ) pPotpisId 
+                mycmd.Parameters.AddWithValue("@pn_doc", pPnDoc)
+                mycmd.Parameters.AddWithValue("@pn_potpis", pSignPos)
+
+                mycmd.Prepare()
+                _RowsAffected = mycmd.ExecuteNonQuery()
+
+                mycmd.CommandText = <![CDATA[
 UPDATE putninalog_potpisi ep, putninalog_hash eh
 SET ep.hash=eh.pn_hash
 WHERE 
@@ -4730,35 +4752,13 @@ ep.pn_id = eh.pn_id
 AND ep.pn_doc = eh.pn_doc 
 AND ep.evd_potpisi_id = @evd_potpisi_id
 AND ep.pn_id = @pPutNalID;
-
     ]]>.Value
 
-
-        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
-            myconnection.Open()
-
-            Dim mycmd As New MySql.Data.MySqlClient.MySqlCommand
-
-            mycmd.Connection = myconnection
-
-            mycmd.CommandText = strSQL
+                mycmd.Prepare()
+                _RowsAffected = mycmd.ExecuteNonQuery() + _RowsAffected
 
 
-            mycmd.Parameters.AddWithValue("@pPutNalID", pESignature.pPutNalID)
-            mycmd.Parameters.AddWithValue("@pESignatue", pESignature.pPutNalESignature)
-            mycmd.Parameters.AddWithValue("@evd_potpisi_id", pESignature.ePublicKeyId)      '''' pESignature.ePublicKeyId (isto što i ) pPotpisId 
-            mycmd.Parameters.AddWithValue("@pn_doc", pPnDoc)
-            mycmd.Parameters.AddWithValue("@pn_potpis", pSignPos)
-            mycmd.Prepare()
-
-            Try
-                Dim _RowsAffected = mycmd.ExecuteNonQuery()
-
-                If _RowsAffected > 0 Then
-                    Return True
-                Else
-                    Return False
-                End If
+                Return If((_RowsAffected > 0), True, False)
 
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
@@ -5047,7 +5047,7 @@ AND aktivan = -1;
                 mycmd.Connection = myconnection
 
                 mycmd.CommandText = strSQL
-    
+
 
                 mycmd.Parameters.Clear()
                 mycmd.Parameters.AddWithValue("@employee_id", pNgESignature.pEmployeeID)
@@ -5078,6 +5078,8 @@ AND aktivan = -1;
         '
         ' PUBLIC KEY setuje u neaktivan i dat_prestanka postavlja na CURRENT_TIMESTAMP
         '
+        '   NE KORISTI SE!
+        '
         strSQL = <![CDATA[
 UPDATE
  evd_potpisi
@@ -5088,7 +5090,14 @@ AND  potpis_publickey = @potpis_publickey;
     ]]>.Value
 
 
-        strSQL = <![CDATA[
+
+        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
+            myconnection.Open()
+
+            Dim mycmd As MySqlCommand = myconnection.CreateCommand()
+
+
+            mycmd.CommandText = <![CDATA[
 UPDATE
  evd_potpisi
 SET
@@ -5096,15 +5105,6 @@ SET
 WHERE employee_id = @employee_id
 AND aktivan = -1;
     ]]>.Value
-
-        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
-            myconnection.Open()
-
-            Dim mycmd As New MySqlCommand
-
-            mycmd.Connection = myconnection
-
-            mycmd.CommandText = strSQL
 
 
             mycmd.Parameters.Clear()
@@ -5158,7 +5158,7 @@ VALUES
                 mycmd.Connection = myconnection
 
                 mycmd.CommandText = strSQL
-    
+
 
                 mycmd.Parameters.Clear()
                 mycmd.Parameters.AddWithValue("@employee_id", pEmployeeID)

@@ -265,19 +265,19 @@ ORDER BY rd2p.`report_data_parameters_code`;
     ''' <returns></returns>
     Public Function CreateDatasource(ByVal pReportDataCode As String) As DataSet
 
-        Dim mycmd As MySqlCommand
-        Dim myda As MySqlClient.MySqlDataAdapter
-        Dim myds As New DataSet
+
+        Dim myda As MySqlDataAdapter
+        Dim myds As New DataSet()
 
         Dim _nazProcedure As String = ""
         Dim _parametri As String = ""
         Dim _paramNum As Integer = 0
 
-        Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
+        Using myconnection As New MySqlConnection(ConnectionString)
             myconnection.Open()
 
-            mycmd = New MySqlCommand
-            mycmd.Connection = myconnection
+            Dim mycmd As MySqlCommand = myconnection.CreateCommand()
+
 
             Dim strSQL As String = <![CDATA[ 
 CALL {nazivProcedure}({parametri});
@@ -329,21 +329,30 @@ ORDER BY rd2p.`report_data_parameters_code` ;
 
             If ParamListValues IsNot Nothing AndAlso _paramNum = ParamListValues.Count Then
 
-                For i As Integer = 1 To ParamListValues.Count
-                    _parametri = _parametri + ParamListValues.Item(i - 1)
-                    If i < _paramNum Then _parametri = _parametri + ","
-                Next
+                Try
+                    For i As Integer = 1 To ParamListValues.Count
+                        _parametri = _parametri + ParamListValues.Item(i - 1)
+                        If i < _paramNum Then _parametri = _parametri + ","
+                    Next
 
 
-                strSQL = <![CDATA[ 
-Call {nazivProcedure}({parametri});
+                    strSQL = <![CDATA[
+CALL {nazivProcedure}({parametri});
 ]]>.Value
 
-                strSQL = strSQL.Replace("{nazivProcedure}", _nazProcedure)
-                strSQL = strSQL.Replace("{parametri}", _parametri)
+                    strSQL = strSQL.Replace("{nazivProcedure}", _nazProcedure).Replace("{parametri}", _parametri)
 
-                myda = New MySqlClient.MySqlDataAdapter(strSQL, myconnection)
-                myda.Fill(myds)
+                    mycmd.CommandText = strSQL
+                    myda = New MySqlDataAdapter()
+                    myda.SelectCommand = mycmd
+
+
+                    'myda = New MySqlDataAdapter(strSQL, myconnection)
+                    myda.Fill(myds)
+                Catch ex As Exception
+                    Console.WriteLine(ex.Message)
+                End Try
+
 
             End If
 

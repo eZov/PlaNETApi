@@ -77,35 +77,42 @@ Public Class ngApiReport
             rpt.Dispose()
         End If
 
-        cReports = New ClsReports
 
 
-        rpt = New ReportDocument
-        rpt.PrintOptions.PaperSize = PaperSize.PaperA4
-
-        cReports.CurrentPath = ngApiPath.getCurrentPath("CrystalReports")
-
-        cReports.CurrentRptName = ""
-        cReports.WriteReportToDisk(pReportCode)     ' uzima CrystalReports iz baze i spašava file u cReports.CurrentRptName
-
-        _rptDocname = cReports.CurrentPath + cReports.CurrentRptName
-        rpt.Load(_rptDocname)
-
-        'cReports.ParamListValues = Session("ParamListValues")
-        cReports.ParamListValues.Add(pPutNalId)
+        Try
+            cReports = New ClsReports
 
 
-        ' CurrentRptDataCode  PLL10
-        ' Sql procedura PTNL1
-        Dim _DSet As DataSet = cReports.CreateDatasource(pDataCode)
-        rpt.SetDataSource(_DSet)
+            rpt = New ReportDocument
+            rpt.PrintOptions.PaperSize = PaperSize.PaperA4
 
-        If _DSet.Tables.Count > 0 Then
+            cReports.CurrentPath = ngApiPath.getCurrentPath("CrystalReports")
 
-            ' rpt.SetParameterValue("pPutNalId", 1)
-            rpt.ExportToDisk(ExportFormatType.PortableDocFormat, ngApiPath.getCurrentPath() + _rptRetFilename)
+            cReports.CurrentRptName = ""
+            cReports.WriteReportToDisk(pReportCode)     ' uzima CrystalReports iz baze i spašava file u cReports.CurrentRptName
 
-        End If
+            _rptDocname = cReports.CurrentPath + cReports.CurrentRptName
+            rpt.Load(_rptDocname)
+
+            'cReports.ParamListValues = Session("ParamListValues")
+            cReports.ParamListValues.Add(pPutNalId)
+
+
+            ' CurrentRptDataCode  PLL10
+            ' Sql procedura PTNL1
+            Dim _DSet As DataSet = cReports.CreateDatasource(pDataCode)
+            rpt.SetDataSource(_DSet)
+
+            If _DSet.Tables.Count > 0 Then
+
+                ' rpt.SetParameterValue("pPutNalId", 1)
+                rpt.ExportToDisk(ExportFormatType.PortableDocFormat, ngApiPath.getCurrentPath() + _rptRetFilename)
+
+            End If
+
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
 
         Return _rptRetFilename
 

@@ -212,7 +212,7 @@ m.`Email` AS default_email
 FROM `notify_exclude` nf
 INNER JOIN `my_aspnet_users_to_employees` u2e ON nf.`EmployeeID` = u2e.`employees_id`
 INNER JOIN `my_aspnet_membership` m ON u2e.`users_id` = m.`userId`
-WHERE nf.`template_name` REGEXP '[[:<:]]%__regexpValue__%[[:>:]]';
+WHERE nf.`template_name` REGEXP '\\b%__regexpValue__%\\b';
     ]]>.Value
 
 
