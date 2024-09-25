@@ -7,7 +7,7 @@ Public Class ngPNProtokolPravaQuery
 
 
     Public Function FindOne(ByVal pId As Integer) As ngPNProtokolPrava
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -61,7 +61,7 @@ WHERE  `id` = @id;
     End Function
 
     Public Function FindByProtokol(ByVal pProtokolId As Integer) As List(Of ngPNProtokolPrava)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -103,7 +103,7 @@ WHERE  `protokol_id` = @protokol_id;
 
 
     Public Function GetAll() As List(Of ngPNProtokolPrava)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[

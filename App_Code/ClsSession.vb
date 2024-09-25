@@ -217,7 +217,8 @@ Imports System.Xml
 
     Public Sub GetRolesDDL()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -262,7 +263,7 @@ WHERE u.`applicationId`=1 AND u.`name`=@username);
 
     'Public Sub GetMenu(ByVal pRole As String, ByRef pMenu As Syncfusion.JavaScript.Web.Menu)
 
-    '    Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+    '    Dim ConnectionString As String = ApiGlobal.domainConnectionString
     '    Dim strSQL As String
 
     '    Dim _mnuItemsJson As String = ""

@@ -13,7 +13,7 @@ Public Class ngPNProtokolEvidencija
     Public Property EmployeeId As Integer
 
     Public Sub Insert()
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[

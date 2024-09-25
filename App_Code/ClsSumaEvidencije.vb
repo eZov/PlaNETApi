@@ -205,7 +205,9 @@ Public Class ClsSumaEvidencije
         Try
             cDataSetLock.Tables.Clear()
 
-            Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+            'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+            Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
             Dim _DataAdapter As MySqlDataAdapter = New MySqlDataAdapter(sqlText, New MySqlConnection(ConnectionString))
             _DataAdapter.SelectCommand.CommandText = sqlText
             cDataSetLock.Tables.Add(cDbTableNameLock)

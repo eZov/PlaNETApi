@@ -19,7 +19,9 @@ Public Class NgApiEmployee
     ' 
     Public Sub listItems(ByVal pStatus As String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL, strSQLEnd1, strSQLEnd2 As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -113,7 +115,9 @@ AND e.Title=@status;
 
     Public Function listItems(ByVal pIds As List(Of Integer), Optional ByVal pStatus As String = "X") As List(Of NgEmployee)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -229,7 +233,7 @@ WHERE
     ' 
     Public Function listItem(ByVal pId As Integer, Optional ByVal pStatus As String = "X") As NgEmployee
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -361,7 +365,7 @@ WHERE
     Public Function listItems(ByVal pLstOrg As String, ByVal pLstPG As String, ByVal pTmpTableName As String,
                                          ByVal pEmployeeId As Integer, Optional ByVal pVrsta As Integer = -1) As List(Of NgEmployee)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim strSQLFix As String
         Dim myda As MySqlClient.MySqlDataAdapter
@@ -570,7 +574,7 @@ LastName;
     Public Function listItems_Email(ByVal pLstOrg As String, ByVal pLstPG As String, ByVal pTmpTableName As String,
                                          ByVal pEmployeeId As Integer, Optional ByVal pVrsta As Integer = -1) As List(Of NgEmployee)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd As String
 
         Dim myda As MySqlClient.MySqlDataAdapter
@@ -770,7 +774,7 @@ LastName;
     ' 
     Public Function insItem(ByRef pInsItem As NgEmployee) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
         Dim _LastInsertedId As Integer = -1
@@ -853,7 +857,7 @@ VALUES
 
     Private Function insItemA(ByRef pInsItem As NgEmployee) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -908,7 +912,7 @@ VALUES
 
     Private Function insItemB(ByRef pInsItem As NgEmployee) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -963,7 +967,7 @@ VALUES
     ' 
     Public Function updItem(ByRef pInsItem As NgEmployee) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1050,7 +1054,7 @@ WHERE EmployeeID = @EmployeeID;
 
     Public Function updItemA(ByRef pInsItem As NgEmployee) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1111,7 +1115,7 @@ WHERE EmployeeID = @EmployeeID;
     ''' <returns></returns>
     Public Function updItemB(ByRef pInsItem As NgEmployee) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1167,7 +1171,7 @@ WHERE EmployeeID = @EmployeeID;
 
     Public Function updItemB1(ByRef pInsItem As NgEmployee) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1209,7 +1213,7 @@ AND ep.`emp_work_default_email`=1;
 
     Public Function updItemByField(ByRef pInsItem As NgEmployee, ByVal pFieldName As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1278,7 +1282,7 @@ VALUES
     ' 
     Public Function delItem(ByRef pDelItem As NgEmployee) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1342,7 +1346,7 @@ WHERE EmployeeID = @EmployeeID;
 
     Public Function listItems_PG(ByVal pIdPG As String) As List(Of Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 

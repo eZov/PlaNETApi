@@ -6,7 +6,9 @@ Imports MySql.Data.Types
 Imports System.Globalization
 
 Public Class ClsDatabase
-    Private cnstr As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+    'Private cnstr As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+    Private cnstr As String = ApiGlobal.domainConnectionString
+
     Private sql As String
     Private dbConnection As MySqlClient.MySqlConnection
     Private dbCmd As MySqlClient.MySqlCommand

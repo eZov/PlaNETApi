@@ -38,7 +38,7 @@ Public Class NgApiEvidencije
 
     Private Sub getSfrEvidPris()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -75,7 +75,7 @@ WHERE sp.`Sifra` NOT IN('SND');
 
     Public Sub getSfrEvidPris(ByVal pType As String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -121,7 +121,7 @@ WHERE sp.`Sifra` NOT IN (
 
     Public Sub getEvidPris(ByVal pEmpID As Integer, ByVal pYear As Integer, ByVal pMonth As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -181,7 +181,7 @@ ORDER BY ep.`datum`;
 
     Public Function getEvidPris1(ByVal pEmpID As Integer, ByVal pYear As Integer, ByVal pMonth As Integer) As List(Of NgEvidDnevnik)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -247,7 +247,7 @@ ORDER BY ed.`datum`;
 
     Public Sub getEvidPrisStatus(ByVal pEmpID As Integer, ByVal pYear As Integer, ByVal pMonth As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -353,7 +353,7 @@ ORDER BY ep.`datum`;
 
     Public Function getEvidPrisStatus1(ByVal pEmpID As Integer, ByVal pYear As Integer, ByVal pMonth As Integer) As NgEvidDnStatus
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -408,7 +408,7 @@ AND MONTH(ep.`datum`)=@Month;
             _EvidDnStatus.locked_ext = False
 
             Try
-            dbRead = mycmd.ExecuteReader
+                dbRead = mycmd.ExecuteReader
 
                 If dbRead.HasRows Then
 
@@ -452,7 +452,7 @@ AND MONTH(ep.`datum`)=@Month;
 
     Public Function updEvidPrisPodnioStatus(ByVal pEmpID As Integer, ByVal pYear As Integer, ByVal pMonth As Integer, ByVal pPodnioEmpID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[ 
@@ -499,7 +499,7 @@ AND `evd_odobrio` IS NULL AND `evd_kontrolisao` IS NULL AND `evd_locked` = 0 ;
 
     Public Sub getEmpName(ByVal pEmpID As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -548,7 +548,7 @@ WHERE e.`EmployeeID`=@empID;
 
     Public Sub delEvidPris(ByVal pEmpID As Integer, ByVal pYear As Integer, ByVal pMonth As Integer, ByVal pAllDates As String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -595,7 +595,7 @@ AND ep.`datum` NOT IN(@AllDates);
     Public Sub insEvidPris(ByVal pEvidPrisTbl As List(Of NgEvidDnevnnik))
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -719,7 +719,7 @@ VALUES
     Public Function insEvidPris1(ByVal pEvidPrisTbl As List(Of NgEvidDnevnik)) As List(Of NgEvidDnevnik)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 

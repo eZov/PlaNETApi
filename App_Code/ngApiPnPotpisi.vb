@@ -26,7 +26,7 @@ Public Class ngApiPnPotpisi
     ' API P-L1 Sql.Select - Validni potpisi
     Public Sub listItems(ByVal pAktivan As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -80,7 +80,7 @@ WHERE ep.aktivan %__SqlAktivan__%;
     ' API P-L2 Sql.Select - ByOrg ByYear return OneItem
     Public Function listItem(ByVal pEmployeeID As Integer, Optional pId As Integer = -1) As ngPnPotpis
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -156,7 +156,7 @@ e.EmployeeID = @EmployeeID
     ' API P-C1 Sql.Insert entry u evd_potpisi
     Public Function insItem(ByRef pInsItem As ngPnPotpis) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
         Dim _LastInsertedId As Integer = -1
@@ -239,7 +239,7 @@ VALUES
     ' API P-S1 Sql.Update
     Public Function updItem(ByRef pInsItem As ngPnProtokol) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -286,7 +286,7 @@ WHERE redbr = @redbr
     ' API P-D1 Sql.Delete
     Public Function delItem(ByRef pDelItem As ngPnProtokol) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 

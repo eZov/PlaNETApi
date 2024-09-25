@@ -40,7 +40,7 @@ Public Class NgApiPnPutniNalog
     Public Sub getPnPutniNalog(ByVal pEmployeeId As Integer, pStatusTxt As String,
                                Optional pDays As Integer = 30)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -152,7 +152,7 @@ AND pot.`status_text` IN(%__StatusText__%);
     ' byuser
     Public Sub getPnUserPutniNalog(ByVal pEmail As String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -263,7 +263,7 @@ WHERE m.`Email`=@Email;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -467,7 +467,7 @@ ORDER BY pn.`dat_poc_putovanja`;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -663,7 +663,7 @@ ORDER BY pn.`dat_poc_putovanja`;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd, strSQLOrgSar As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -977,7 +977,7 @@ GROUP BY pn.id;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1197,7 +1197,7 @@ ORDER BY pn.dat_poc_putovanja;
 
     Private Function getOrgJed(ByVal pEmail As String) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1333,7 +1333,7 @@ FROM sfr_organizacija s;
         Dim _lstPg As String = getPg(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1428,7 +1428,7 @@ WHERE e.EmployeeID IN(%__ListOrgJed__%);
 
     Private Function getPg(ByVal pEmail As String) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1567,7 +1567,7 @@ WHERE s.Sifra IN(%__ListOrgJed__%);
     Public Function getPnPutniNalogById(ByVal pId As Integer, ByVal pEmpId As Integer,
                                         Optional pVrsta As String = "") As ngPnPutniNalog
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1664,7 +1664,7 @@ WHERE pn.`id`=@Id %__Vrsta__%;
     ' API L6
     Public Function getPnPutniNalogIzvById(ByVal pId As Integer) As ngPnPutniNalog
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1749,7 +1749,7 @@ WHERE pn.id=@Id;
     Public Function getPnPotpis_1_ById(ByVal pId As Integer,
                                         Optional pVrsta As String = "") As ngPnPutniNalog
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1825,7 +1825,7 @@ WHERE pn.`id`=@Id %__Vrsta__%;
     ' API L7
     Public Function getPnPutniNalogStaById(ByVal pGetStatus As String, ByVal pFromStatus As String, ByVal pPnId As Integer) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -1899,7 +1899,7 @@ AND pn.id=@pnid;
     ' API L4
     Public Function getPnPutniNalogDetById(ByVal pId As Integer) As NgPnPutniNalogDet
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1964,7 +1964,7 @@ ORDER BY pn_oblast, order_id;
     ' API L8i
     Public Function getPnPutniNalogIzvDetById(ByVal pId As Integer) As NgPnPutniNalogDet
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -2045,7 +2045,7 @@ ORDER BY pn_oblast, order_id;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -2197,7 +2197,7 @@ ORDER BY pnd.pn_id, pnd.pn_oblast, pnd.order_id;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -2348,7 +2348,7 @@ ORDER BY pnd.pn_id, pnd.pn_oblast, pnd.order_id;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -2534,7 +2534,7 @@ ORDER BY pnd.pn_id, pnd.pn_oblast, pnd.order_id;
 
     Public Function isSignedByPos(ByVal pPnId As Integer, ByVal pPnDoc As Integer, ByVal pSignPos As Integer) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _retVal As Integer = 0
 
@@ -2586,7 +2586,7 @@ AND pnd.`pn_potpis` = @pSignPos;
 
     Public Function isSignedBySigner(ByVal pPnId As Integer, ByVal pPnDoc As Integer, ByVal pSignerId As Integer) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _retVal As Integer = 0
 
@@ -2644,7 +2644,7 @@ AND pnd.`evd_potpisi_id` = @pSignerId;
 
     Public Function getLastSignedFile(ByVal pPnId As Integer, ByVal pPnDoc As Integer) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -2694,7 +2694,7 @@ ORDER BY pnd.id DESC LIMIT 0,1;
 
     Public Function getLastSigned(ByVal pPnId As Integer, ByVal pPnDoc As Integer) As ngEmail
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -2755,7 +2755,7 @@ ORDER BY pnd.id DESC LIMIT 0,1;
 
     Public Function getLastSignedPos(ByVal pPnId As Integer, ByVal pPnDoc As Integer) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -2801,7 +2801,7 @@ ORDER BY pnd.id DESC LIMIT 0,1;
 
     Public Function getLastSignedESignID(ByVal pPnId As Integer, ByVal pPnDoc As Integer) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -2847,7 +2847,7 @@ ORDER BY pnd.id DESC LIMIT 0,1;
 
     Public Function getSignedPos(ByVal pPnId As Integer, ByVal pPnDoc As Integer) As Dictionary(Of Integer, Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         Dim _epotpisId As New Dictionary(Of Integer, Integer)
@@ -2891,7 +2891,7 @@ WHERE pnp.pn_id = @PnId AND pnp.pn_doc = @pPnDoc;
     ' API C1
     Public Function insPutNalNalog(ByRef pPutNalNalog As ngPnPutniNalog) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -2934,7 +2934,7 @@ VALUES ( @employee_id, 0 );
     ' API C1 id putnog naloga u putninalog_user
     Public Function insPutNalNalogUser(ByRef pPutNalNalog As ngPnPutniNalog, ByVal pUserEmail As String) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -2980,7 +2980,7 @@ WHERE m.Email=@user_email;
     ' API C1 Dodavanje redova za obračun
     Public Function insPutNalNalogDet(ByRef pPutNalNalogID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim _RowsAffected As Integer = -1
 
 
@@ -3048,7 +3048,7 @@ VALUES (@pPutNalNalog, 4, 1);
     ' API C1 Dodavanje redova za izvještaj
     Public Function insPutNalNalogIzv(ByRef pPutNalNalogID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -3091,7 +3091,7 @@ VALUES (@pPutNalNalog);
     ' API C1 Dodavanje redova za izvještaj
     Public Function insPutNalNalogDetIzv(ByRef pPutNalID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim _RowsAffected As Integer = -1
 
 
@@ -3183,7 +3183,7 @@ VALUES (@pPutNalNalog, 4, '***', 'Ostalo', 5);
     ' API S1
     Public Function updPutNalStatus(ByVal pPutNalID As Integer, ByVal pStatus As String, ByVal pUserEmpId As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
 
         Using myconnection As New MySqlConnection(ConnectionString)
@@ -3235,7 +3235,7 @@ AND pns.status_text = @pStatus;
 
     Public Function insPutNalLog(ByVal pPutNalID As Integer, ByVal pUserEmpId As Integer, ByVal pPnDoc As Integer, ByVal pSignPos As Integer, ByVal pEmpPotpisId As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3288,7 +3288,7 @@ SELECT
     ' API S1
     Public Function updPutNalAkontacija(ByVal pPutNalID As Integer, ByVal pIsplAkontacija As Decimal) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3329,7 +3329,7 @@ WHERE pn.id = @id;
     ' protokolevid API poziva
     Public Shared Function updPutNalProtokol(ByVal pPutNalID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3382,7 +3382,7 @@ pn.id = @id;
     ' API S2
     Public Function updPutNalNalog(ByVal pPutNalID As Integer, ByRef pPutNalNalog As ngPnPutniNalog) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3492,7 +3492,7 @@ WHERE id = @pPutNalID;
     ' API S2A
     Public Function updPutNalIzv(ByVal pPutNalID As Integer, ByRef pPutNalNalog As ngPnPutniNalog) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3533,7 +3533,7 @@ WHERE pn_id = @pPutNalID;
     ' API S3 Sql.Update
     Public Function updPutNalNalogDet(ByVal pID As Integer, ByRef pPutNalNalogDet As NgPnPutniNalogDet) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3615,7 +3615,7 @@ WHERE id = @id AND pn_id = @pn_id;
     ' API S3 Sql.Insert
     Public Function insPutNalNalogDet(ByVal pID As Integer, ByRef pPutNalNalogDet As NgPnPutniNalogDet) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3719,7 +3719,7 @@ VALUES
     ' API S3 Suma ukupnih troškova UPDATE
     Public Function updPutNalDetSuma(ByVal pPutNalID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3792,7 +3792,7 @@ WHERE pn.id=@pPutNalID;
     ' API S5i Sql.Update
     Public Function updPutNalNalogIzvDet(ByVal pID As Integer, ByRef pPutNalNalogDet As NgPnPutniNalogDet) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3874,7 +3874,7 @@ WHERE id = @id AND pn_id = @pn_id;
     ' API S5i Sql.Insert
     Public Function insPutNalNalogIzvDet(ByVal pID As Integer, ByRef pPutNalNalogDet As NgPnPutniNalogDet) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -3977,7 +3977,7 @@ VALUES
     ' API S6
     Public Function updPutNalNalogCol(ByVal pPutNalID As Integer, ByRef pPutNalNalog As ngPnPutniNalog, ByVal pColName As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -4027,7 +4027,7 @@ WHERE id = @pPutNalID;
     ' API S6
     Public Function updPutNalNalogTem(ByVal pPutNalID As Integer, ByRef pPutNalNalog As ngPnPutniNalog) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -4077,7 +4077,7 @@ VALUES
     ' API D1 Sql.Delete
     Public Function delPutNalNalog(ByVal pPutNalID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL1, strSQL2 As String
         Dim _RowsAffected As Integer = -1
 
@@ -4134,7 +4134,7 @@ WHERE pn_id=@pn_id;
     ' API D2 Sql.Delete
     Public Function delPutNalNalogDet(ByVal pPutNalID As Integer, ByVal pID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -4181,7 +4181,7 @@ WHERE id = @id AND pn_id=@pn_id;
     ' API D3i Sql.Delete
     Public Function delPutNalNalogIzvDet(ByVal pPutNalID As Integer, ByVal pID As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -4499,7 +4499,7 @@ WHERE id = @id AND pn_id=@pn_id;
 
     Private Function updSignPutNalHASH(ByVal pPutNalID As Integer, ByVal pPutNalDoc As Integer, ByVal pPutNalHASH As String, ByVal pPutNalEsignVal As String, ByVal pPutNalEsignType As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -4663,7 +4663,7 @@ VALUES
     ' Get PubliKey
     Private Function getPublicKey(ByRef _ngESignature As NgESignature) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -4716,7 +4716,7 @@ AND ep.`aktivan` = -1;
     ' API eS1
     Public Function insPutNalESignature(ByRef pESignature As NgESignature, ByVal pPnDoc As Integer, ByVal pSignPos As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Using myconnection As New MySqlClient.MySqlConnection(ConnectionString)
             myconnection.Open()
@@ -4773,7 +4773,7 @@ AND ep.pn_id = @pPutNalID;
     ' API eD1
     Public Function delPutNalESignature(ByRef pInData As ngPnPotpisByCert, ByVal pEvdPotpisiId As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -4829,7 +4829,7 @@ AND evd_potpisi_id = @evd_potpisi_id;
 
     Public Function delPutNalPdfByCert(ByRef pInData As ngPnPotpisByCert, ByVal pEvdPotpisiId As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -4883,7 +4883,7 @@ AND evd_potpisi_id = @evd_potpisi_id;
 
     Public Function delPutNalHash(ByRef pInData As ngPnPotpisByCert) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         strSQL = <![CDATA[
@@ -4963,7 +4963,7 @@ AND pn_doc = @pn_doc;
     ' API esL1
     Public Function listESignature(ByRef pNgESignature As NgESignature) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         Dim _hasESignature As Boolean = False
@@ -5017,7 +5017,7 @@ AND ep.Aktivan <> 0;
     ' API esC1
     Public Function insESignature(ByRef pNgESignature As NgESignature) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         '
@@ -5072,7 +5072,7 @@ AND aktivan = -1;
     ' API esD1
     Public Function delESignature(ByRef pNgESignature As NgESignature) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         '
@@ -5124,7 +5124,7 @@ AND aktivan = -1;
     ' API esRD
     Public Function readyESignature(ByVal pEmployeeID As Integer, Optional ByVal pAktivan As Integer = -1) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         Dim _NgESignature As New NgESignature
@@ -5181,7 +5181,7 @@ VALUES
     ' API esPK
     Public Function listPublicKey(ByRef pNgESignature As NgESignature) As NgESignature
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -5307,7 +5307,7 @@ WHERE ep.`employee_id`=@employee_id AND  ep.aktivan = -1;
                                         Optional ByVal pStatusFrom As String = "otvoren",
                                          Optional ByVal pStatusTo As String = "odobren") As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         '
@@ -5354,7 +5354,7 @@ VALUES
     Public Function delAuthorizeESignature(ByVal pEvdPotpisiID As Integer, Optional ByVal pDocument As Integer = 1,
                                         Optional ByVal pStatusFrom As String = "otvoren") As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
         '
@@ -5400,7 +5400,7 @@ WHERE
     Public Function getEsignEmployeeList(ByVal pLstOrg As String, ByVal pLstPG As String, ByVal pTmpTableName As String,
                                          ByVal pEmployeeId As Integer) As List(Of NgUser)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable

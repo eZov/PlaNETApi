@@ -62,7 +62,7 @@ SELECT sj.`Opis`, sc.`adm_value` FROM `sys_configuration` sc INNER JOIN `sys_jso
 
     Public Shared Function getSysJSON(ByVal pName As String) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 

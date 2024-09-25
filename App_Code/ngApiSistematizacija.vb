@@ -17,7 +17,7 @@ Public Class ngApiSistematizacija
     ' 
     Public Sub listItems()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -61,7 +61,7 @@ ORDER BY o.Naziv;
     ' 
     Public Function listItem(ByVal pId As Integer) As NgSistematizacija
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -124,7 +124,7 @@ ORDER BY o.Naziv;
 
     Public Function listItem(ByVal pSifra As String) As NgSistematizacija
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable

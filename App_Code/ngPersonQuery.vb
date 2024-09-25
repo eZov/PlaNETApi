@@ -7,7 +7,7 @@ Public Class ngPersonQuery
 
 
     Public Function FindOne(ByVal pID As Integer) As ngPerson
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -67,7 +67,7 @@ WHERE `sifra` = @sifra;
 
 
     Public Function AllPersons() As List(Of ngPerson)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[

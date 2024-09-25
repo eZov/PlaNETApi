@@ -19,7 +19,9 @@ Public Class ngApiAktivnost
     ' 
     Public Sub listItems()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -60,7 +62,9 @@ FROM
     ' 
     Public Function listItem(ByVal pId As Integer) As ngAktivnost
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -123,7 +127,9 @@ WHERE id=@id;
     ' 
     Public Function insItem(ByRef pInsItem As ngAktivnost) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
         Dim _LastInsertedId As Integer = -1
@@ -174,7 +180,9 @@ VALUES
     ' 
     Public Function updItem(ByRef pInsItem As ngAktivnost) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -222,7 +230,9 @@ WHERE id = @id;
     ' 
     Public Function delItem(ByRef pDelItem As ngAktivnost) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 

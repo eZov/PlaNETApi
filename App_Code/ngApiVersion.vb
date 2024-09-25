@@ -2,7 +2,7 @@
 
 Public Class ngApiVersion
 
-    Public Property version As String = "0.9.24.05.17"
+    Public Property version As String = "0.9.24.09.25"
     Public Property footer As String = "PlaNET | Zov Consulting | ver "
     Public Property mainText As String = "PlaNET - API ver "
 

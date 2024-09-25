@@ -84,7 +84,7 @@ Public Class NgApiOrganizacija
         Dim _lstOrgSifras As New List(Of String)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim dbRead As MySqlDataReader
 
@@ -154,7 +154,7 @@ OR so.`Sifra`=@Sifra_Nadnivo;
         Dim _lstDbPGEmpIds As New List(Of String)
         Dim _lstPGEmpIds As New List(Of String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim dbRead As MySqlDataReader
 
@@ -202,7 +202,7 @@ WHERE spg.`Sifra` IN(__%PGSifra%__);
 
         Dim _lstDbPGs As New List(Of String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim dbRead As MySqlDataReader
 
@@ -258,7 +258,7 @@ WHERE spg.`Sifra` IN(__%PGSifra%__) AND `Sifra Nadnivo` = '999000';
 
     Public Function getFullOrgTree() As List(Of NgOrganizacija)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim dbRead As MySqlDataReader
 
@@ -303,7 +303,7 @@ ORDER BY so.`Sifra`, so.`Sifra Nadnivo`;
     'TODO: Preseliti ovu funkciju u ApiSession
     Public Function getOrgRole(ByVal pEmail As String, Optional ByVal pIsPG As Boolean = False) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim dbRead As MySqlDataReader
 
@@ -355,7 +355,7 @@ AND m.Email=@Email
 
     Public Sub getOrgRole(ByVal pEmail As String, ByRef rLstOrg As String, ByRef rLstPG As String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim dbRead As MySqlDataReader
 

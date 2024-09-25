@@ -33,7 +33,9 @@ Public Class NgApiSession
 
     Public Function isUsernamePasswordValid(ByVal pPassword As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
 
@@ -81,7 +83,7 @@ WHERE ms.`Email`=@email AND ms.`Password`=@password;
     ' isUUIDindbase (UUID)
     Public Function isUUIDindbase(ByVal pUUID As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _hasRows As Boolean = False
 
@@ -126,7 +128,7 @@ WHERE m.`Email`=@email;
     ' insertUUID (UUID)
     Public Function insUUID(ByVal pUUID As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -171,7 +173,7 @@ VALUES (@pUserId, @pUUID);
 
     Private Sub getEmployeeId()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -214,7 +216,7 @@ WHERE m.`Email`=@email;
 
     Public Function getEmployeeId(ByVal pEmpEmail As String) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _employeeId As Integer = -1
 
@@ -256,7 +258,7 @@ WHERE m.`Email`=@email;
 
     Public Sub getEmployeeRoles()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -365,7 +367,7 @@ ORDER BY r.`name`;
 
     Public Function getApiRolesAllowed(ByVal pController As String, ByVal pMethod As String) As String()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -444,7 +446,7 @@ WHERE sj.`Naziv` = 'api.roles';
 
     Public Function insApiLog(ByVal pLog As String, ByVal pComment As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -748,7 +750,7 @@ VALUES
 
     Public Function getSubRole(ByVal pRole As String, ByVal pEmail As String) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
         Dim subRole As String = Nothing
@@ -808,7 +810,7 @@ AND r.name=@role;
     Public Function getEmployeeRolesList(ByVal pLstOrg As String, ByVal pLstPG As String, ByVal pTmpTableName As String,
                                          ByVal pEmployeeId As Integer) As List(Of NgUserRoles)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -962,7 +964,7 @@ GROUP BY a.name) AS r
     ' byorg + bypg
     Public Function setOrgRole(ByVal pEmail As String, ByVal pOrg As String, ByVal pOrgPG As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1025,7 +1027,7 @@ AND  Form = 'APIputnal';
     Public Function getEmployeeOrgRolesList(ByVal pLstOrg As String, ByVal pLstPG As String, ByVal pTmpTableName As String,
                                          ByVal pEmployeeId As Integer) As List(Of NgUserOrgRoles)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1189,7 +1191,7 @@ AND  Form = 'APIputnal';
         Dim pWebAccessInt As Integer = IIf(pApiAccess = False, 0, 1)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
 
 
@@ -1277,7 +1279,7 @@ AND m.`IsLockedOut`=1;
 
     Public Function lockUser(ByVal pEmail As String) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -1333,7 +1335,7 @@ WHERE m.Email = @Email;
 
     Private Sub setUserToEmployee(ByVal pUserId As Integer, ByVal pEmployeeID As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim strSQL As String = <![CDATA[ 
 REPLACE INTO my_aspnet_users_to_employees (users_id, employees_id)
@@ -1361,7 +1363,7 @@ VALUES
 
     Private Sub removeUserToEmployee(ByVal pUserId As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim strSQL As String = <![CDATA[ 
 DELETE FROM  my_aspnet_users_to_employees
@@ -1388,7 +1390,7 @@ WHERE users_id = @pUserId;
 
     Private Function removeMobUserUUID(ByVal pUserId As Integer) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim strSQL As String = <![CDATA[ 
 DELETE FROM  my_aspnet_users_to_uuid
@@ -1432,7 +1434,7 @@ WHERE users_id = @pUserId;
     Public Function getEmployeeList(ByVal pLstOrg As String, ByVal pLstPG As String, ByVal pTmpTableName As String,
                                          ByVal pEmployeeId As Integer, Optional ByVal pVrsta As Integer = -1) As List(Of NgUser)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1623,7 +1625,7 @@ WHERE users_id = @pUserId;
 
         Dim _tmpTable As String = "tmp_" + pEmployeeId.ToString + "_apissesion"
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrg, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable

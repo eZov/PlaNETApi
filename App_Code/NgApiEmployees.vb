@@ -22,7 +22,7 @@ Public Class NgApiEmployees
 
     Public Function getEmployees(Optional ByVal pLstOrg As String = "", Optional ByVal pLstPG As String = "", Optional pAktivan As String = "*") As List(Of NgEmployees)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrgPG, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -122,7 +122,7 @@ LIMIT @top
 
     Public Function getEmployeesExt(Optional ByVal pLstOrg As String = "", Optional ByVal pLstPG As String = "") As List(Of NgEmployees)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL, strSQLStart, strSQLOrgPG, strSQLOrg, strSQLPG, strSQLEnd As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable

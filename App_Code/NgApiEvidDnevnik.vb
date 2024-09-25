@@ -39,7 +39,7 @@ Public Class NgApiEvidDnevnik
 
     Public Sub getEvidDnevnikExt()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -94,7 +94,7 @@ AND edx.`godina` = @YYYY;
 
     Public Sub getEvidDnevnikDummy()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -135,7 +135,7 @@ CALL EVDwb_create_tmp_dummy(@employeeID, @MM, @YYYY);
 
     Public Sub getEvidDnevnik()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -201,7 +201,7 @@ ORDER BY ed.`datum`, ed.`vrijeme_od`;
 
     Public Function getEvidDnevnik(ByVal pDataTable As Boolean) As DataTable
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -268,7 +268,7 @@ ORDER BY ed.`datum`, ed.`vrijeme_od`;
 
     Public Sub insEvidDnevnik(ByVal pEmpId As Integer, Optional ByVal pPreparedDnevnik As Boolean = True)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -312,7 +312,7 @@ VALUES
             Try
                 While dt.Month = Me.MM
                     mycmd.CommandText = strSQL
-        
+
 
                     Select Case pPreparedDnevnik
                         '
@@ -379,7 +379,7 @@ VALUES
     ]]>.Value
 
                 mycmd.CommandText = strSQL
-    
+
 
                 mycmd.Parameters.Clear()
                 mycmd.Parameters.AddWithValue("@employeeID", Me.EmployeeID)
@@ -401,7 +401,7 @@ VALUES
 
     Public Sub insEvidDnevnikRow(ByVal pEmpId As Integer, ByRef pEvidDnevnik As List(Of NgEvidDnevnik))
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -448,7 +448,7 @@ VALUES
                     End If
 
                     mycmd.CommandText = strSQL
-        
+
 
                     mycmd.Parameters.Clear()
                     mycmd.Parameters.AddWithValue("@employeeID", el.employeeID)
@@ -478,7 +478,7 @@ VALUES
 
     Public Sub delEvidDnevnikRow(ByRef pEvidDnevnik As List(Of NgEvidDnevnik))
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -506,7 +506,7 @@ WHERE id = @id;
                     End If
 
                     mycmd.CommandText = strSQL
-        
+
 
                     mycmd.Parameters.Clear()
                     mycmd.Parameters.AddWithValue("@id", el.id)
@@ -528,7 +528,7 @@ WHERE id = @id;
 
     Public Sub updEvidDnevnikRow(ByVal pEmpId As Integer, ByRef pEvidDnevnik As List(Of NgEvidDnevnik), Optional ByVal pSuperLock As Boolean = False)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -571,7 +571,7 @@ WHERE id = @id;
 
 
                     mycmd.CommandText = strSQL
-        
+
 
                     mycmd.Parameters.Clear()
                     mycmd.Parameters.AddWithValue("@id", el.id)
@@ -624,7 +624,7 @@ WHERE id = @id;
     End Function
 
     Public Sub setLock(ByVal pLock As Boolean, Optional ByVal pSuperLock As Boolean = False)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -674,7 +674,7 @@ AND ed.evd_locked < @evd_superlock;
 
     Public Sub setLockExt()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -703,7 +703,7 @@ AND godina = @godina;
             Try
 
                 mycmd.CommandText = strSQL
-    
+
 
                 mycmd.Parameters.Clear()
 
@@ -734,7 +734,7 @@ AND godina = @godina;
     End Sub
 
     Public Sub ins2Evidencije_OLD()
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -837,7 +837,7 @@ AND ed.sifra_placanja='SP';
     End Sub
 
     Public Sub ins2Evidencije()
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -873,7 +873,7 @@ CALL EVDwb_ins2evid(@employeeID, @MM, @YYYY);
     End Sub
 
     Public Sub del2Evidencije()
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQLes, strSQLep As String
         Dim DtList As New DataTable
 
@@ -949,7 +949,7 @@ AND YEAR(ep.datum) = @YYYY;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1029,7 +1029,7 @@ ORDER BY e.`LastName`, e.`FirstName`, e.`employeeID`;
         'Dim _lstOrg As String = getOrgJed(pEmail)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -1087,13 +1087,13 @@ ORDER BY e.LastName;
 
             Return JsonConvert.DeserializeObject(Of List(Of NgEvidDnStatus))(ngApiGeneral.GetJson(DtList))
 
-            End Using
+        End Using
 
     End Function
 
     Public Sub updEvidDnevnikStatus(ByRef pEvidDnStatusLst As List(Of NgEvidDnStatus))
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 

@@ -17,7 +17,7 @@ Public Class ngApiProtokol
     ' API P-L1 Sql.Select - ByYear
     Public Sub listItems(ByVal pYear As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -65,7 +65,7 @@ WHERE godina=@pYear;
     ' API P-L1 Sql.Select - ByOrg ByYear
     Public Sub listItems(ByVal pOrgJed As String, ByVal pYear As Integer)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -115,7 +115,7 @@ AND orgjed=@pOrgJed;
     ' API P-L2 Sql.Select - ByOrg ByYear return OneItem
     Public Function listItem(ByVal pOrgJed As String, ByVal pYear As Integer) As ngPnProtokol
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -180,7 +180,7 @@ AND orgjed=@pOrgJed;
     ' API P-L3 Sql.Select - ByRedBr ByYear return OneItem
     Public Function listItem(ByVal pRedBr As Integer, ByVal pYear As Integer) As ngPnProtokol
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -244,7 +244,7 @@ AND redbr=@pRedBr;
     ' API P-L2 Sql.Select - ByOrg ByYear return OneItem iz OrgJed ili nad nivoa
     Public Function listItem(ByVal pOrgJed As String, ByVal pYear As Integer, Optional ByVal pNadNivo As Boolean = False) As ngPnProtokol
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim myda As MySqlClient.MySqlDataAdapter
         Dim DtList As New DataTable
@@ -317,7 +317,7 @@ AND (s3.`Sifra`=@pOrgJed);
     ' API P-C1 Sql.Insert
     Public Function insItem(ByRef pInsItem As ngPnProtokol) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
         Dim _LastInsertedId As Integer = -1
@@ -370,7 +370,7 @@ VALUES
     ' API P-S1 Sql.Update
     Public Function updItem(ByRef pInsItem As ngPnProtokol) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 
@@ -418,7 +418,7 @@ WHERE
     ' API P-D1 Sql.Delete
     Public Function delItem(ByRef pDelItem As ngPnProtokol) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim _RowsAffected As Integer = -1
 

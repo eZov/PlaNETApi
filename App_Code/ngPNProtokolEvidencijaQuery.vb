@@ -6,7 +6,7 @@ Imports Microsoft.VisualBasic
 Public Class ngPNProtokolEvidencijaQuery
 
     Public Function FindOne(ByVal pID As Integer) As ngPNProtokolEvidencija
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -62,7 +62,7 @@ WHERE `pn_id` = @pn_id;
 
 
     Public Function GetAll() As List(Of ngPNProtokolEvidencija)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -95,7 +95,7 @@ FROM
     End Function
 
     Public Function GetByProtokol(ByVal pProtokol As String) As List(Of ngPNProtokolEvidencija)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[

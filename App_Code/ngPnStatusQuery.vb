@@ -6,7 +6,7 @@ Imports MySql.Data.MySqlClient
 Public Class ngPnStatusQuery
 
     Public Function FindOne(ByVal pID As Integer) As ngPnStatus
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -52,7 +52,7 @@ WHERE `id` = @id;
 
 
     Public Function GetAll() As List(Of ngPnStatus)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[

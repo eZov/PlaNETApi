@@ -13,7 +13,7 @@ Public Class ngProtokol
     Public Property Opis As String
 
     Public Sub Insert()
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[

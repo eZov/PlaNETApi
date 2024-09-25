@@ -15,7 +15,7 @@ Public Class NgApiMenusByRole
     ' byemp
     Public Sub getMenu(ByVal pRole As String, ByVal pEmail As String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
         Dim jsonOpis As String = Nothing
@@ -72,7 +72,7 @@ AND mr.`subrole`=@subrole;
 
     Public Function getSubRole(ByVal pRole As String, ByVal pEmail As String) As String
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
         Dim subRole As String = Nothing

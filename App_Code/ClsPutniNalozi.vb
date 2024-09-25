@@ -113,7 +113,7 @@ Public Class ClsPutniNalozi
     Public Shared Sub getPutniNalozi(ByVal employee_id As Integer, ByVal status_naloga As Integer, _
                     ByRef ddlPutniNalog As System.Web.UI.WebControls.DropDownList)
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        ' Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim SQL As String = "SELECT PutniNalog.putninalog_id, PutniNalog.mjesto_putovanja , PutniNalog.date_added  FROM PutniNalog " _
@@ -137,7 +137,7 @@ Public Class ClsPutniNalozi
 
     Public Shared Function getPutniNalogStatus(ByVal putninalog_id As Integer) As String
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        ' Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim SQL As String = "SELECT putninalog_status.status_text FROM putninalog INNER JOIN plc_portal.putninalog_status " _
@@ -250,7 +250,7 @@ Public Class ClsPutniNalozi
 
     Public Shared Function savePutniNalog(ByRef pPutniNalog As ClsPutniNalog) As Boolean
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim retVal As Boolean = False
         Dim strSQL As String
         Dim xmlSQL As XElement
@@ -400,7 +400,7 @@ Public Class ClsPutniNalozi
         End Try
 
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog_Obracun SET " _
                             & " relacija = '" & relacija & "' ," _
@@ -429,7 +429,7 @@ Public Class ClsPutniNalozi
     ByRef naknada_km As String, ByRef troskovi_goriva As String, ByRef troskovi_parkinga As String, _
     ByRef ostali_troskovi As String)
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog_Obracun SET " _
                             & " relacija = '" & relacija & "' ," _
@@ -455,7 +455,7 @@ Public Class ClsPutniNalozi
     End Sub
     Public Shared Sub savePutniNalog_Obracun_3(ByVal putninalog_id As Integer, ByVal line_id As Integer, _
     ByRef ukupan_iznos As String, ByRef obracun_ostalih_troskova As String)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog_Obracun SET " _
                             & " ukupan_iznos = " & dbDouble(ukupan_iznos) & ", " _
@@ -475,7 +475,6 @@ Public Class ClsPutniNalozi
     Public Shared Sub savePutniNalog_Obracun_Rekapitulacija(ByVal putninalog_id As Integer, ByVal iznos_rek_a As String, ByVal iznos_rek_b As String, _
     ByVal iznos_rek_c As String, ByVal iznos_rek_ukupno As String, ByVal iznos_rek_akontacija As String, ByVal iznos_rek_razlika As String)
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " ukupnitroskovi_a = " & dbDouble(iznos_rek_a) & ", " _
@@ -529,7 +528,6 @@ Public Class ClsPutniNalozi
     ByRef prev_auto As Boolean, ByRef prev_vlauto As Boolean, ByRef prev_avion As Boolean, ByRef prev_autobus As Boolean, _
     ByRef prevoz_voz As Boolean, ByRef iznos_akontacije As String)
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
 
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim SQL As String = "SELECT putninalog_id, employee_id, radno_mjesto, mjesto_putovanja, razlog_putovanja, " _
@@ -577,7 +575,7 @@ Public Class ClsPutniNalozi
         ByRef relacija As String, ByRef dat_polaska As String, ByRef vri_polaska As String, ByRef dat_povratka As String, _
         ByRef vri_povratka As String, ByRef broj_sati As String, ByRef broj_dnevnica As String, ByRef iznos_dnevnice As String, _
         ByRef ukupan_iznos As String)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim SQL As String = "SELECT relacija, dat_polaska, vri_polaska, dat_povratka, vri_povratka, " _
                           & "broj_sati, broj_dnevnica, iznos_dnevnice, ukupan_iznos, vrsta_prevoza, razred, " _
@@ -646,7 +644,7 @@ Public Class ClsPutniNalozi
     ByRef naknada_km As String, ByRef troskovi_goriva As String, ByRef troskovi_parkinga As String, _
     ByRef ostali_troskovi As String)
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim SQL As String = "SELECT relacija, dat_polaska, vri_polaska, dat_povratka, vri_povratka, " _
                           & "broj_sati, broj_dnevnica, iznos_dnevnice, ukupan_iznos, vrsta_prevoza, razred, " _
@@ -677,7 +675,7 @@ Public Class ClsPutniNalozi
     Public Shared Sub getPutniNalog_Obracun_3(ByVal putninalog_id As Integer, ByVal line_id As Integer, _
     ByRef ukupan_iznos As String, ByRef obracun_ostalih_troskova As String)
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "SELECT relacija, dat_polaska, vri_polaska, dat_povratka, vri_povratka, " _
                           & "broj_sati, broj_dnevnica, iznos_dnevnice, ukupan_iznos, vrsta_prevoza, razred, " _
@@ -701,7 +699,7 @@ Public Class ClsPutniNalozi
     Public Shared Sub getPutniNalog_Obracun_rekapitulacija(ByVal putninalog_id As Integer, ByRef iznos_rek_1 As String, ByRef iznos_rek_2 As String, _
     ByRef iznos_rek_3 As String, ByRef iznos_rek_ukupno As String, ByRef iznos_rek_akontacija As String, ByRef iznos_rek_razlika As String)
 
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "SELECT * " _
                           & "FROM PutniNalog WHERE putninalog_id=" & putninalog_id.ToString & " ;"
@@ -725,7 +723,7 @@ Public Class ClsPutniNalozi
     End Sub
 
     Public Shared Sub odobriPutniNalog(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Odobren & "  WHERE putninalog_id = " & putninalog_id & " AND iznos_akontacije>0;"
@@ -748,7 +746,7 @@ Public Class ClsPutniNalozi
         logOdobravanjaPutniNalog(putninalog_id, employee_id, nalogStatus.Odobren)
     End Sub
     Public Shared Sub odobriPutniNalog_Storno(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Otvoren & "  WHERE putninalog_id = " & putninalog_id & " ;"
@@ -766,7 +764,7 @@ Public Class ClsPutniNalozi
         logOdobravanjaPutniNalog(putninalog_id, employee_id, nalogStatus.Otvoren)
     End Sub
     Public Shared Sub popuniPutniNalog(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Popunjen & "  WHERE putninalog_id = " & putninalog_id & " ;"
@@ -784,7 +782,7 @@ Public Class ClsPutniNalozi
         logOdobravanjaPutniNalog(putninalog_id, employee_id, nalogStatus.Popunjen)
     End Sub
     Public Shared Sub popuniPutniNalog_Storno(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Aktivan & "  WHERE putninalog_id = " & putninalog_id & " ;"
@@ -802,7 +800,7 @@ Public Class ClsPutniNalozi
         logOdobravanjaPutniNalog(putninalog_id, employee_id, nalogStatus.Aktivan)
     End Sub
     Public Shared Sub provjeriPutniNalog(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Provjeren & "  WHERE putninalog_id = " & putninalog_id & " ;"
@@ -820,7 +818,7 @@ Public Class ClsPutniNalozi
         logOdobravanjaPutniNalog(putninalog_id, employee_id, nalogStatus.Provjeren)
     End Sub
     Public Shared Sub aktivirajPutniNalog(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Aktivan & "  WHERE putninalog_id = " & putninalog_id & " ;"
@@ -838,7 +836,7 @@ Public Class ClsPutniNalozi
         logOdobravanjaPutniNalog(putninalog_id, employee_id, nalogStatus.Aktivan)
     End Sub
     Public Shared Sub obracunajPutniNalog(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Obracunat & "  WHERE putninalog_id = " & putninalog_id & " ;"
@@ -856,7 +854,7 @@ Public Class ClsPutniNalozi
         logOdobravanjaPutniNalog(putninalog_id, employee_id, nalogStatus.Obracunat)
     End Sub
     Public Shared Sub opravdajPutniNalog(ByVal putninalog_id As Integer, ByVal employee_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "UPDATE PutniNalog SET " _
                             & " status_naloga = " & nalogStatus.Opravdan & "  WHERE putninalog_id = " & putninalog_id & " ;"
@@ -875,7 +873,7 @@ Public Class ClsPutniNalozi
     End Sub
 
     Public Shared Sub logOdobravanjaPutniNalog(ByVal putninalog_id As Integer, ByVal employee_id As Integer, ByVal status_id As Integer)
-        ' Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("Northwind").ConnectionString
+
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         Dim strSQL As String = "INSERT INTO putninalog_odobravanje (putninalog_id, employee_id, status_id,	date_added) " _
                                 & " VALUES (" & putninalog_id & ", " & employee_id & ", " & status_id & ", now());"

@@ -9,7 +9,9 @@ Imports System
 
 
 Public Module General
-    Public ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+    'Public ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+    Public ConnectionString As String = ApiGlobal.domainConnectionString
+
     'Public dbConnection As MySql.Data.MySqlClient.MySqlConnection
 
     Public defUserPefix As String = "bhrt"
@@ -755,7 +757,7 @@ Public Module General
 
     Sub getEmployeeFullName(ByRef EmployeeName As String, ByRef currentUser As MembershipUser, ByRef EmployeeID As Integer)
 
-        'Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
         ' TODO : Provjeriti zasto se javlja greska
 

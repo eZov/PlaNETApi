@@ -91,7 +91,9 @@ Public Class ngApiCertificate
     '
     Public Function isDbReady(ByRef pECertificate As NgECertificate) As Boolean
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _retValue As Boolean = False
 
@@ -148,7 +150,9 @@ WHERE ep.employee_id = @employee_id AND  ep.aktivan = -1;
 
     Public Sub getStatus(ByRef pECertificate As NgECertificate)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _retValue As Boolean = False
 
@@ -220,7 +224,9 @@ WHERE ep.employee_id = @employee_id
 
     Public Sub getOdobrenje(ByRef pECertificate As NgECertificate)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _retValue As Boolean = False
 
@@ -272,7 +278,9 @@ WHERE es.`evd_potpisi_id` = @evd_potpisi_id;
 
     Public Function getId(ByRef pEmployeeID As Integer) As Integer
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _retValue As Integer = Nothing
 

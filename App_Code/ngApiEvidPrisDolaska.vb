@@ -70,7 +70,7 @@ Public Class ngApiEvidPrisDolaska
     Public Function getGeoLoc(ByRef pEvidPrisDolaska As NgEvidPrisDolaska) As TextReader
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -134,7 +134,7 @@ WHERE e.`EmployeeID`=@EmployeeId;
     Public Function selEvidPrisIN(ByRef pEvidPrisDolaska As NgEvidPrisDolaska) As NgEvidPrisDolaska
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -200,7 +200,7 @@ AND ed.`EmployeeId` = @EmployeeId;
     Public Function selEvidPrisRec(ByRef pEvidPrisDolaska As NgEvidPrisDolaska, Optional ByVal pNumRecs As Integer = 1) As List(Of NgEvidPrisDolaska)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -268,7 +268,7 @@ LIMIT 0, @NumRecs;
     Public Sub insEvidPrisIn(ByRef pEvidPrisDolaska As NgEvidPrisDolaska)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 
@@ -317,7 +317,7 @@ VALUES  (   @EmployeeId, @InTime, @InGeoloc, @OnLocation, @Opis);
     Public Sub insEvidPrisOut(ByRef pEvidPrisDolaska As NgEvidPrisDolaska)
 
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 

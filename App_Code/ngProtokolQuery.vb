@@ -7,7 +7,7 @@ Public Class ngProtokolQuery
 
 
     Public Function FindOne(ByVal pId As Integer) As ngProtokol
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -62,7 +62,7 @@ WHERE `id` = @id;
 
 
     Public Function GetAll() As List(Of ngProtokol)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -94,7 +94,7 @@ FROM
     End Function
 
     Public Function GetByEmp(ByVal pEmpId As Integer) As List(Of ngProtokol)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[

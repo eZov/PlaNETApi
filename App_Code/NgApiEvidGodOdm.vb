@@ -26,7 +26,7 @@ Public Class NgApiEvidGodOdm
 
     Public Sub getEvidGodOdm()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim strSQL As String
         Dim DtList As New DataTable
 

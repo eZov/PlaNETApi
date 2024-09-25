@@ -49,7 +49,9 @@ Public Class ngApiEmailNotify
 
     Private Function getListPG(ByVal pEmployeeId As Integer) As List(Of String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
         Dim _listPG As New List(Of String)
 
@@ -107,7 +109,9 @@ WHERE pg.`Opis` REGEXP '[[:<:]]%__EmployeeId__%[[:>:]]';
 
     Private Function getNotifyEmailsSql(ByVal pSfrOrgjed As String, ByVal pRoles As String) As List(Of String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
         '
@@ -154,7 +158,9 @@ AND rl.`name` IN (%__ListRoles__%);
 
     Private Function getNotifyEmailsPGSql(ByVal pSfrPG As String, ByVal pRoles As String) As List(Of String)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
         '
@@ -201,7 +207,9 @@ AND rl.`name` IN (%__ListRoles__%);
 
     Public Sub getForbiddenEmails()
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
         '
@@ -269,7 +277,9 @@ WHERE nf.`template_name` REGEXP '\\b%__regexpValue__%\\b';
 
     Private Function getSendEmailsSql(ByVal pEmails As String) As Dictionary(Of String, ngEmail)
 
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
         '
@@ -315,7 +325,9 @@ WHERE m.`Email` IN( %__ListEmails__% );
     End Function
 
     Public Sub getNotifyRolesAndTemplate(ByVal pPnStatus As String, ByVal pnWorkflow As String)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
         '
@@ -368,7 +380,9 @@ AND wf.workflow = @workflow;
     End Sub
 
     Public Sub getTemplate()
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
         '
@@ -478,7 +492,9 @@ WHERE nt.`template_name` = @template_name;
 
 
     Public Shared Function getTemplates() As List(Of NgEmailTemplate)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        'Dim ConnectionString As String = ApiGlobal.domainConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
+
         Dim strSQL As String
 
         '

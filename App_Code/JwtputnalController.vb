@@ -17,12 +17,8 @@ Imports System.Collections.Generic
 Public Class JwtputnalController
     Inherits ApiController
 
-    Enum parList
-        byemp
-        byuser
-        byorg
-        bypg
-    End Enum
+    Public domainName As String = ""
+    Public domainConnectionString As String = ""
 
     ' GET api/<controller>
     Public Function GetValues() As IEnumerable(Of String)
@@ -4531,6 +4527,12 @@ Public Class JwtputnalController
     <HttpPost>
     Public Function Login(
         <FromBody> ByVal loginVM As NgLogin) As IHttpActionResult
+
+        'ApiGlobal.domainName = Request.RequestUri().Host
+        'ApiGlobal.domainConnectionString = ConfigurationManager.ConnectionStrings(ApiGlobal.domainName).ConnectionString
+        ApiGlobal.SetDomain(Request.RequestUri().Host)
+
+
         Dim loginResponse = New NgLoginResponse()
 
         Dim loginrequest = New NgLogin With {
@@ -4571,11 +4573,14 @@ Public Class JwtputnalController
             _comment = "Login nakon uspješne autentifikacije..."
             _ApiSession.insApiLog(_log, _comment)
 
+            ApiGlobal.ClearDomain()
             Return Json(_JwtOK)
         End If
 
         loginResponse.responseMsg.StatusCode = HttpStatusCode.Unauthorized
         Dim response As IHttpActionResult = ResponseMessage(loginResponse.responseMsg)
+
+        ApiGlobal.ClearDomain()
         Return response
     End Function
 

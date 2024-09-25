@@ -638,7 +638,7 @@ Public Class ClsUposleniPodaci
     End Sub
 
     Public Shared Sub GetEmployees_List(ByRef _ListBox As System.Web.UI.WebControls.ListBox)
-        Dim ConnectionString As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
 
         Dim SQL As String = " SELECT t3.EmployeeID, t3.LastName, t3.FirstName FROM my_aspnet_users t1 INNER JOIN my_aspnet_users_to_employees t2 " _
@@ -662,9 +662,9 @@ Public Class ClsUposleniPodaci
         End Try
     End Sub
 
-    Public Shared Sub GetEmployees_ListNeodobrene(ByRef _ListBox As System.Web.UI.WebControls.ListBox, _
+    Public Shared Sub GetEmployees_ListNeodobrene(ByRef _ListBox As System.Web.UI.WebControls.ListBox,
                                                   ByVal curYear As Integer, ByVal curMonth As Integer)
-        Dim ConnectionString As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
 
         Dim SQL As String = "SELECT t3.EmployeeID, t3.LastName, t3.FirstName FROM my_aspnet_users t1 INNER JOIN my_aspnet_users_to_employees t2 " _
@@ -691,9 +691,9 @@ Public Class ClsUposleniPodaci
         End Try
     End Sub
 
-    Public Shared Sub GetEmployees_ListNeodobrene(ByRef _Label As System.Web.UI.WebControls.Label, _
+    Public Shared Sub GetEmployees_ListNeodobrene(ByRef _Label As System.Web.UI.WebControls.Label,
                                               ByVal curYear As Integer, ByVal curMonth As Integer)
-        Dim ConnectionString As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
 
         Dim SQL As String = "SELECT t3.EmployeeID, t3.LastName, t3.FirstName FROM my_aspnet_users t1 INNER JOIN my_aspnet_users_to_employees t2 " _
@@ -726,9 +726,9 @@ Public Class ClsUposleniPodaci
         End Try
     End Sub
 
-    Public Shared Sub GetEmployees_BezLista(ByRef _Label As System.Web.UI.WebControls.Label, _
+    Public Shared Sub GetEmployees_BezLista(ByRef _Label As System.Web.UI.WebControls.Label,
                                           ByVal curYear As Integer, ByVal curMonth As Integer)
-        Dim ConnectionString As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
 
         Dim SQL As String = "SELECT t3.EmployeeID, t3.LastName, t3.FirstName FROM my_aspnet_users t1 INNER JOIN my_aspnet_users_to_employees t2 " _
@@ -761,9 +761,9 @@ Public Class ClsUposleniPodaci
     End Sub
 
 
-    Public Shared Sub GetEmployees_BezLista(ByRef _ListBox As System.Web.UI.WebControls.ListBox, _
+    Public Shared Sub GetEmployees_BezLista(ByRef _ListBox As System.Web.UI.WebControls.ListBox,
                                                   ByVal curYear As Integer, ByVal curMonth As Integer)
-        Dim ConnectionString As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
 
         Dim SQL As String = "SELECT t3.EmployeeID, t3.LastName, t3.FirstName FROM my_aspnet_users t1 INNER JOIN my_aspnet_users_to_employees t2 " _
@@ -789,9 +789,9 @@ Public Class ClsUposleniPodaci
         End Try
     End Sub
 
-    Public Shared Sub GetEmployees_BezPunihSati(ByRef _ListBox As System.Web.UI.WebControls.ListBox, _
+    Public Shared Sub GetEmployees_BezPunihSati(ByRef _ListBox As System.Web.UI.WebControls.ListBox,
                                               ByVal curYear As Integer, ByVal curMonth As Integer)
-        Dim ConnectionString As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
 
         Dim dt As Date = New Date(curYear, curMonth, 1)
@@ -830,9 +830,9 @@ Public Class ClsUposleniPodaci
         End Try
     End Sub
 
-    Public Shared Sub GetEmployees_BezPunihSati(ByRef _Label As System.Web.UI.WebControls.Label, _
+    Public Shared Sub GetEmployees_BezPunihSati(ByRef _Label As System.Web.UI.WebControls.Label,
                                       ByVal curYear As Integer, ByVal curMonth As Integer)
-        Dim ConnectionString As String = ConfigurationManager.ConnectionStrings("Evidencije").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
         Dim con As New MySqlClient.MySqlConnection(ConnectionString)
 
         Dim dt As Date = New Date(curYear, curMonth, 1)

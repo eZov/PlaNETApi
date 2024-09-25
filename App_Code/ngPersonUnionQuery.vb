@@ -7,7 +7,7 @@ Public Class ngPersonUnionQuery
 
 
     Public Function AllPersons() As List(Of ngPersonUnion)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim mycmd As New MySqlCommand
         mycmd.CommandText = <![CDATA[
@@ -66,7 +66,7 @@ ORDER BY prezime;
     End Function
 
     Public Function AllPersons(ByVal pLstOrg As String, ByVal pLstPG As String) As List(Of ngPersonUnion)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim strSQL As String
         Dim mycmd As New MySqlCommand
@@ -154,7 +154,7 @@ ORDER BY prezime;
     End Function
 
     Public Shared Function AllPersons2(ByVal pLstOrg As String, ByVal pLstPG As String, ByVal pLstPGeXT As String) As List(Of ngPersonUnion)
-        Dim ConnectionString As String = WebConfigurationManager.ConnectionStrings("MySQLConnection").ConnectionString
+        Dim ConnectionString As String = ApiGlobal.domainConnectionString
 
         Dim strSQL As String
         Dim mycmd As New MySqlCommand
