@@ -10,7 +10,11 @@ Public Class ApiGlobal
     Public Shared Sub SetDomain(ByVal _request As String)
 
         ApiGlobal.domainName = _request
-        ApiGlobal.domainConnectionString = ConfigurationManager.ConnectionStrings(ApiGlobal.domainName).ConnectionString
+        Try
+            ApiGlobal.domainConnectionString = ConfigurationManager.ConnectionStrings(ApiGlobal.domainName).ConnectionString
+        Catch ex As Exception
+            ApiGlobal.domainConnectionString = ""
+        End Try
 
     End Sub
 
